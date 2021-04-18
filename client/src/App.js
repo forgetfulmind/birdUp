@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Members from "./pages/members"
+import LogIn from "./pages/login"
 
 function App() {
   return (
@@ -10,8 +12,17 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={["/", "/signup"]}>
+        <Route exact path={"/"}>
+            <LogIn />
+          </Route>
+          <Route exact path={"/login"}>
+            <LogIn />
+          </Route>
+          <Route exact path={"/signup"}>
             <SignUp />
+          </Route>
+          <Route exact path={"/members"}>
+            <Members />
           </Route>
           <Route>
             <NoMatch />

@@ -3,7 +3,7 @@ import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
 
 //create state 
-function SignUp() {
+function LogIn() {
 
   const [formObject, setFormObject] = useState({})
 
@@ -23,10 +23,9 @@ function SignUp() {
     // console.log(formObject.email)
     // console.log(formObject.password)
     if (formObject.email && formObject.password) {
-      API.saveUser({
+      API.logIn({
         email: formObject.email,
         password: formObject.password,
-        username: formObject.email.split("@")[0]
       })
         .then(res =>  window.location.replace("/members"))
         .catch(err => console.log(err));
@@ -35,9 +34,14 @@ function SignUp() {
     }
   };
 
+  function goToPage(){
+    window.location.replace("/signup")
+  }
+
 
     return (
       <div>
+        <h1>Login</h1>
       <form>
         <Input
           onChange={handleInputChange}
@@ -53,9 +57,10 @@ function SignUp() {
               // disabled={!(formObject.email && formObject.title)}
               onClick={handleFormSubmit}
             >
-            Submit
+            Login
             </FormBtn>
     </form>
+        <FormBtn onClick={goToPage}>Sign Up</FormBtn>
     </div>
     )
 
@@ -66,4 +71,4 @@ function SignUp() {
 
 
 
-export default SignUp;
+export default LogIn;
