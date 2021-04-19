@@ -5,6 +5,7 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Members from "./pages/members"
 import LogIn from "./pages/login"
+import isAuthenticated from "./utils/isauthenticated"
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
           <Route exact path={"/signup"}>
             <SignUp />
           </Route>
-          <Route exact path={"/members"}>
-            <Members />
-          </Route>
+          <Route exact path={"/members"} render={(req)=>(
+            isAuthenticated(req) ?  <Members /> : <LogIn />
+          )}/>
           <Route>
             <NoMatch />
           </Route>

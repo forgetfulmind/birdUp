@@ -7,7 +7,6 @@ import React from "react"
 function Members() {
 
 
-
     return (
       <div>
         <h1>Abandon hope all ye who enter</h1>
