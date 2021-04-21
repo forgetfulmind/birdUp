@@ -2,8 +2,9 @@
 import React from "react";
 // import API from "../../utils/API";
 // import { Input, FormBtn } from "../../components/Form";
-// import style from "./style.css"
+import style from "./style.css"
 import Login from "../../components/Login/login"
+import birdUp from "../../assets/birdUp.svg"
 
 //create state 
 function LogIn() {
@@ -43,14 +44,18 @@ function LogIn() {
   
     return (
       <div className="landing">
-        <Login />
-        {/* <div className="sideBar">
+        <div className="sideBar">
 
         </div>
 
         <div className="login">
-        <h1>Login</h1>
-        <form>
+          <div className="container">
+            <h2 className="birdUp">Bird<strong>Up</strong></h2>
+            <img src={birdUp} className="emblem"/>
+          </div>
+        {/* <h1>Login</h1> */}
+        <Login />
+        {/* <form>
           <Input
             onChange={handleInputChange}
             name="email"
@@ -67,8 +72,8 @@ function LogIn() {
           Login
           </FormBtn>
       </form>
-        <FormBtn onClick={goToPage}>Sign Up</FormBtn>
-      </div> */}
+        <FormBtn onClick={goToPage}>Sign Up</FormBtn> */}
+      </div>
 
     </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
 
-const clientID = 'GRUNGLE_CLIENTID'
+const clientID = 'SecretGrungleId'
 
 function Login(){
 
@@ -18,10 +18,10 @@ function Login(){
             <GoogleLogin 
                 clientId={clientID}
                 buttonText="Login"
+                icon={false}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={'single_host_origin'}
-                style={{ marginTop: '100px'}}
                 isSignedIn={true}
             />
         </div>
