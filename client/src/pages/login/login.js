@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import API from "../utils/API";
-import { Input, FormBtn } from "../components/Form";
+import API from "../../utils/API";
+import { Input, FormBtn } from "../../components/Form";
+import style from "./style.css"
 
 //create state 
 function LogIn() {
@@ -37,30 +38,34 @@ function LogIn() {
   function goToPage(){
     window.location.replace("/signup")
   }
-
-
+  
     return (
-      <div>
+      <div className="landing">
+        <div className="sideBar">
+
+        </div>
+
+        <div className="login">
         <h1>Login</h1>
-      <form>
-        <Input
-          onChange={handleInputChange}
-          name="email"
-          placeholder="Email (required)"
-        />
+        <form>
+          <Input
+            onChange={handleInputChange}
+            name="email"
+            placeholder="Email (required)"
+          />
           <Input
             onChange={handleInputChange}
             name="password"
             placeholder="Password (required)"
           />
-            <FormBtn
-              // disabled={!(formObject.email && formObject.title)}
-              onClick={handleFormSubmit}
-            >
-            Login
-            </FormBtn>
-    </form>
+          <FormBtn
+            onClick={handleFormSubmit}
+          >
+          Login
+          </FormBtn>
+      </form>
         <FormBtn onClick={goToPage}>Sign Up</FormBtn>
+      </div>
     </div>
     )
 
