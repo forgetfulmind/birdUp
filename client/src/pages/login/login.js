@@ -1,47 +1,50 @@
-import React, { useState, useEffect } from "react";
-import API from "../../utils/API";
-import { Input, FormBtn } from "../../components/Form";
-import style from "./style.css"
+// import React, { useState, useEffect } from "react";
+import React from "react";
+// import API from "../../utils/API";
+// import { Input, FormBtn } from "../../components/Form";
+// import style from "./style.css"
+import Login from "../../components/Login/login"
 
 //create state 
 function LogIn() {
 
-  const [formObject, setFormObject] = useState({})
+  // const [formObject, setFormObject] = useState({})
 
-  useEffect(() => {
-  }, [])
+  // useEffect(() => {
+  // }, [])
 
-  //hand input for email and password fields into state 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value})
-  };
+  // //hand input for email and password fields into state 
+  // function handleInputChange(event) {
+  //   const { name, value } = event.target;
+  //   setFormObject({...formObject, [name]: value})
+  // };
 
-  //form submit handling
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    // console.log("click")
-    // console.log(formObject.email)
-    // console.log(formObject.password)
-    if (formObject.email && formObject.password) {
-      API.logIn({
-        email: formObject.email,
-        password: formObject.password,
-      })
-        .then(res =>  window.location.replace("/members"))
-        .catch(err => console.log(err));
-    }else {
-      return
-    }
-  };
+  // //form submit handling
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //   // console.log("click")
+  //   // console.log(formObject.email)
+  //   // console.log(formObject.password)
+  //   if (formObject.email && formObject.password) {
+  //     API.logIn({
+  //       email: formObject.email,
+  //       password: formObject.password,
+  //     })
+  //       .then(res =>  window.location.replace("/members"))
+  //       .catch(err => console.log(err));
+  //   }else {
+  //     return
+  //   }
+  // };
 
-  function goToPage(){
-    window.location.replace("/signup")
-  }
+  // function goToPage(){
+  //   window.location.replace("/signup")
+  // }
   
     return (
       <div className="landing">
-        <div className="sideBar">
+        <Login />
+        {/* <div className="sideBar">
 
         </div>
 
@@ -65,7 +68,8 @@ function LogIn() {
           </FormBtn>
       </form>
         <FormBtn onClick={goToPage}>Sign Up</FormBtn>
-      </div>
+      </div> */}
+
     </div>
     )
 
