@@ -1,5 +1,6 @@
 body{
     background-color: #e7e8dd;
+    color: #10171a;
     margin: 0;
     overflow: hidden;
 }
@@ -15,7 +16,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 50vw;
+    width: 45vw;
     height: 100vh;
     border-right: 20px solid #10171a;
 }
@@ -26,5 +27,35 @@ body{
 
 .login{
     padding: 25px;
-    width: 50vw;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    text-align: center;
+    position: relative;
+}
+
+.birdUp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+}
+strong{
+    color: #7d8e7e;
+}
+
+.emblem{
+    width: 60%;
+    height: 60%;
+}
+
+button{
+    width: 100px;
+    display: flex;
+    justify-content: center;
 }
