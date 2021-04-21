@@ -1,0 +1,30 @@
+body{
+    background-color: #e7e8dd;
+    margin: 0;
+    overflow: hidden;
+}
+
+.landing{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sideBar{
+    background-image: url("https://i.imgur.com/vUIeSyY.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 50vw;
+    height: 100vh;
+    border-right: 20px solid #10171a;
+}
+
+.sideImg{
+    width: 100%;
+}
+
+.login{
+    padding: 25px;
+    width: 50vw;
+}
