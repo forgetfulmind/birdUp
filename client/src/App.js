@@ -6,6 +6,8 @@ import Nav from "./components/Nav";
 import Members from "./pages/members"
 import LogIn from "./pages/login"
 import isAuthenticated from "./utils/isauthenticated"
+import SubmitBird from "./pages/submitBird.js"
+import GoogleLogin from "./pages/googleLogin.js"
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
           </Route>
           <Route exact path={"/signup"}>
             <SignUp />
+          </Route>
+          <Route exact path={"/submitBird"}>
+            <SubmitBird />
+          </Route>
+          <Route exact path={"/googleLogin"}>
+            <GoogleLogin />
           </Route>
           <Route exact path={"/members"} render={(req)=>(
             isAuthenticated(req) ?  <Members /> : <LogIn />
