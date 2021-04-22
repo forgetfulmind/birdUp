@@ -1,7 +1,7 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
 
-const clientID = 'SecretGrungleId'
+const clientID = '1021236725065-i7grqilbpg1rtbgs5jod4dp98j96mp37.apps.googleusercontent.com'
 
 function Login(){
 
