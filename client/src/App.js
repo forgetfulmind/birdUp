@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";
-import Members from "./pages/members"
+import Members from "./pages/members/members"
 import LogIn from "./pages/login/login"
 // import isAuthenticated from "./utils/isauthenticated"
 import SubmitBird from "./pages/submitBird.js"
@@ -28,7 +28,7 @@ function App() {
 
           <Route exact path={"/members"}>
             <Members />
-            </Route>
+          </Route>
 
           <Route exact path={"/submitBird"}>
             <SubmitBird />
