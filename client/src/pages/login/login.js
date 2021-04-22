@@ -3,9 +3,9 @@ import React from "react";
 // import API from "../../utils/API";
 // import { Input, FormBtn } from "../../components/Form";
 import style from "./style.css"
-import Login from "../../components/Login/login"
+// import Login from "../../components/Login/login"
 import birdUp from "../../assets/birdUp.svg"
-
+import GoogleAuth from "../../components/GoogleAuth/GoogleAuth"
 //create state 
 function LogIn() {
 
@@ -54,7 +54,8 @@ function LogIn() {
             <img src={birdUp} className="emblem"/>
           </div>
         {/* <h1>Login</h1> */}
-        <Login />
+        {/* <Login /> */}
+        <GoogleAuth />
         {/* <form>
           <Input
             onChange={handleInputChange}
