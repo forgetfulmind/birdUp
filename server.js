@@ -1,6 +1,7 @@
 const express = require("express");
 var session = require("express-session");
 var passport = require("./config/passport");
+require('dotenv').config()
 
 
 const mongoose = require("mongoose");

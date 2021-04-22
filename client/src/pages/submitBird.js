@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
+// import key from "../utils/birdup-311403-da29d60bbb5d.json"
 
 //create state 
 function SubmitBird() {
@@ -24,11 +25,12 @@ function SubmitBird() {
     // console.log(formObject.password)
     if (birdObject.image) {
             const vision = require('@google-cloud/vision');
-                
+            const options = {
+              credentials: require("../utils/birdup-311403-da29d60bbb5d.json"), 
+              projectId: 'birdup-311403'
+            }
             // Creates a client
-            const client = new vision.ImageAnnotatorClient({
-                keyFilename: "../MyKey.json"
-            });
+            const client = new vision.ImageAnnotatorClient(options);
           
             // Performs label detection on the image file
             const [result] = client.labelDetection([ birdObject.image ]);
