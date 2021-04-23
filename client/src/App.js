@@ -10,6 +10,7 @@ import SubmitBird from "./pages/submitBird.js"
 // import GoogleLogin from "./pages/login/login.js"
 import  MyComponent  from "./pages/map"
 import Map from "./pages/map.js"
+import  MapContainer  from "./pages/map"
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
           <Route>
             <NoMatch />
           </Route>
-            {/* <MyComponent /> DISPLAYS GOOGLE MAP */}
+            {/* <MapContainer /> DISPLAYS GOOGLE MAP */}
         </Switch>
       </div>
     </Router>
