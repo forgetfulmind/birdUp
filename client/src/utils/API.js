@@ -22,5 +22,25 @@ export default {
   },
   saveUser: function(userData){
     return axios.post("/api/users", userData)
-  }
+  },
+
+  submitBird: function(userData) {
+    return axios.post("apikey",
+    {
+      "requests":[
+        {
+          "image":{
+            "content":`${userData}`
+          },
+          "features":[
+            {
+              "type":"LABEL_DETECTION",
+              "maxResults":10
+            }
+          ]
+        }
+      ]
+    })
+  } 
+
 };
