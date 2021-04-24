@@ -8,7 +8,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   useEffect(() => {
     const params = {
       clientId:
-        "GRUNGLE_ID",
+        "",
       scope: "email",
     };
 

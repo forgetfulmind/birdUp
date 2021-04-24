@@ -1,7 +1,7 @@
 import React from 'react'
 import { GoogleLogout } from 'react-google-login'
 
-const clientID = 'GRUNGLE_CLIENTID'
+const clientID = ''
 
 function Logout(){
     const onSuccess = () =>{
