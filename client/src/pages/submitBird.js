@@ -10,6 +10,21 @@ function SubmitBird() {
 const [birdObject, setBirdObject] = useState({})
 const [birdObject64, setBirdObject64] = useState({})
 
+
+  const [ currentPosition, setCurrentPosition ] = useState({});
+  
+  const success = position => {
+    const userPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+    setCurrentPosition(userPosition);
+  };
+  
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  },[])
+
   useEffect(() => {
   }, [])
 
@@ -26,10 +41,15 @@ const [birdObject64, setBirdObject64] = useState({})
       console.log(response, 26)
 
       if(response.length > 0) {
-        let {latitude, longitude} = exifr.gps(birdObject).then(
+        let data = {
+          latitude: currentPosition.lat,
+          longitude: currentPosition.lng,
+        };
 
-        console.log({latitude, longitude}))
-      }
+        let imgData = {
+          image: birdObject
+        }
+        }
 
     })
     
