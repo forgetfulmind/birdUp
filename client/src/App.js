@@ -8,9 +8,7 @@ import LogIn from "./pages/login/login"
 // import isAuthenticated from "./utils/isauthenticated"
 import SubmitBird from "./pages/submitBird.js"
 // import GoogleLogin from "./pages/login/login.js"
-import  MyComponent  from "./pages/map"
-import Map from "./pages/map.js"
-import  MapContainer  from "./pages/map"
+import  MapContainer  from "./pages/earth"
 
 
 function App() {
@@ -36,8 +34,9 @@ function App() {
           <Route exact path={"/submitBird"}>
             <SubmitBird />
           </Route>
-          <Route exact path={"/map"}>
-            <Map />
+          <Route exact path={"/earth"}>
+            {/* <Map /> */}
+          <MapContainer /> DISPLAYS GOOGLE MAP
           </Route>
           {/* <Route exact path={"/googleLogin"}>
             <GoogleLogin />
@@ -49,7 +48,6 @@ function App() {
           <Route>
             <NoMatch />
           </Route>
-            {/* <MapContainer /> DISPLAYS GOOGLE MAP */}
         </Switch>
       </div>
     </Router>
