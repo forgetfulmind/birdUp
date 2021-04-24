@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
-
+import exifr from 'exifr'
 
 
 //create state 
@@ -9,6 +9,21 @@ function SubmitBird() {
 
 const [birdObject, setBirdObject] = useState({})
 const [birdObject64, setBirdObject64] = useState({})
+
+
+  const [ currentPosition, setCurrentPosition ] = useState({});
+  
+  const success = position => {
+    const userPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+    setCurrentPosition(userPosition);
+  };
+  
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  },[])
 
   useEffect(() => {
   }, [])
@@ -20,7 +35,23 @@ const [birdObject64, setBirdObject64] = useState({})
   useEffect((event) => {
      //console.log(birdObject64, 17)
     let base64 = birdObject64.toString()
-    API.submitBird(base64.split(",")[1]).then(res => {console.log(res)})
+    API.submitBird(base64.split(",")[1]).then(res => {
+      console.log(res)
+      let response = res.data.responses[0].labelAnnotations.filter(desc => desc.description === "Bird")
+      console.log(response, 26)
+
+      if(response.length > 0) {
+        let data = {
+          latitude: currentPosition.lat,
+          longitude: currentPosition.lng,
+        };
+
+        let imgData = {
+          image: birdObject
+        }
+        }
+
+    })
     
   },[birdObject64])
 
