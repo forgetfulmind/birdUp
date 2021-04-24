@@ -91,7 +91,10 @@ const MapContainer = () => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
+              <div>
               <p>{selected.name}</p>
+              <a href="">{selected.name}</a>
+              </div>
             </InfoWindow>
             )
 }
