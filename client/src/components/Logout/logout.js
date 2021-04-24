@@ -11,7 +11,7 @@ function Logout(){
     return(
         <div>
             <GoogleLogout
-            clientId={clientId}
+            clientId={"clientId"}
             buttonText="Logout"
             onLogoutSuccess={onSuccess}
             >

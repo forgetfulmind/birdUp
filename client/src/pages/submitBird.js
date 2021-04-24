@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
-
+import exifr from 'exifr'
 
 
 //create state 
@@ -20,7 +20,18 @@ const [birdObject64, setBirdObject64] = useState({})
   useEffect((event) => {
      //console.log(birdObject64, 17)
     let base64 = birdObject64.toString()
-    API.submitBird(base64.split(",")[1]).then(res => {console.log(res)})
+    API.submitBird(base64.split(",")[1]).then(res => {
+      console.log(res)
+      let response = res.data.responses[0].labelAnnotations.filter(desc => desc.description === "Bird")
+      console.log(response, 26)
+
+      if(response.length > 0) {
+        let {latitude, longitude} = exifr.gps(birdObject).then(
+
+        console.log({latitude, longitude}))
+      }
+
+    })
     
   },[birdObject64])
 

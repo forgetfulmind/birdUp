@@ -18,7 +18,7 @@ function Login(){
     return(
         <div>
             <GoogleLogin 
-                clientId={clientID}
+                clientId={"clientID"}
                 buttonText="Login"
                 icon={false}
                 onSuccess={onSuccess}
