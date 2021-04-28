@@ -6,20 +6,22 @@ import style from "./style.css"
 function UserPage() {
     // create state using hooks, drop info into placeholder locations
     return (
-    <div>
-        <div className="UserInfo">
-            <img src="https://i.imgur.com/5mji4kq.png" className="UserIcon"/> 
-            <div>
-                <h2>Username</h2>
-                <h4>Observations: 00</h4>
-                <h4>Joined: 04.22.21</h4>
-
-                <div className="Bio"> 
-                Lorem ipsum blah blah bio probably has a cutoff of like 200 characters or something. 
-                </div>
+    <div className="wrapper"> 
+      <div className="mainImage d-flex justify-content-center align-items-center flex-column">
+        <div className="filter">
+         <div className="boxHeading">
+            <h1 className="heading">
+                Username
+            </h1>
+            <div className="userProps">
+                <p>Joined 02.21.21</p>
+                <p>00 Observations </p>
             </div>
+          </div>
         </div>
-        <FeaturedObservation />
+        <div className="search">
+        </div>
+      </div>
         <Nav />
     </div>
   )
