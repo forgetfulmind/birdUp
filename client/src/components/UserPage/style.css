@@ -1,47 +1,72 @@
-.UserInfo{
+body{
+    overflow-x: hidden;
+}
+
+.wrapper{
     display: flex;
-    flex-direction: row;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     justify-content: center;
-    padding: 10px;
-    width: 35vw;
-    color:  #e7e8dd;
-    background-color: #10171a;
-    margin-right: 20px;
-}
-
-.UserIcon{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-.Bio{
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    /* background-color: */
-}
-
-h4{
-    color: #7d8e7e;
-}
-
-.FeaturedImage{
-    width: 350px;
-    height: 350px;
-    flex-shrink: none;
-    object-fit: cover;
-}
-
-.FeaturedObservation{
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 15px;
+}
+  
+.mainImage{
+    background: url(https://images.unsplash.com/photo-1577558727018-e80c441a9387?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2378&q=80);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: fit;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 20vh;
+    position: relative;
+    z-index: 1;
+    border-bottom: 10px solid #10171a;
+}
+
+.filter{
+    background-color: rgba(13, 18, 20, 0.719);
+    display: block;
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+    
+.boxHeading{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 50px;
+   height: 20vh;
+}
+
+.heading{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    color: #e7e8dd;
+    font-weight: 300px;
+}
+
+.userProps{
+    color: #e7e8dd;
+    line-height: .5rem;
+    font-weight: 200px;
 }
 
 .navbar{
     background-color: #10171a;
+    position: fixed;
+    bottom: 0;
+    overflow: hidden;
+    width: 100vw;
+    justify-content: center;
 }
 
 a{

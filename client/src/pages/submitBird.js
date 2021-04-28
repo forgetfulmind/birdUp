@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
-import exifr from 'exifr'
+// import exifr from 'exifr'
 
 
 //create state 

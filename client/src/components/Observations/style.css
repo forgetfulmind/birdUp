@@ -1,17 +1,53 @@
+.ObservationBlock{
+    margin-top: 1rem;
+    width: 65vw;
+}
+
+.ObservationContainer{
+    height: 65vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+    ::-webkit-scrollbar-track {
+    background: #10171a; 
+    background-clip: content-box;
+  }
+    ::-webkit-scrollbar-thumb {
+    background: #7d8e7e; 
+    border-radius: 10px;
+    height: 15px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4d6c6; 
+} 
+  
+
 .observation{
     background-color: #d4d6c6;
     display: flex;
     flex-direction: row;
     padding: 10px;
-    width: 65vw;
     align-items: center;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-top: 20px solid #a6b3a7;
 }
 
 .observationImage{
     width: 100px;
     height: 100px;
     object-fit: cover;
+    border-radius: 5px;
 }
+
+/* img:hover {
+    filter: blur(4px);
+} */
 
 .observationBody{
     margin-left: 10px;

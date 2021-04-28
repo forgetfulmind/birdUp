@@ -5,19 +5,25 @@ import style from "./style.css"
 function Observations() {
     // create state 
     return (
-    <div>
+    <div className="ObservationBlock">
       <h2>Username's Observations</h2>
+
+      <div className="ObservationContainer">
+
         <div className="observation">
         {/* map over user's observations starting at div class observation */}
-            <div>
-                <img src="https://i.imgur.com/vUIeSyY.jpg" className="observationImage"/>
-            </div>
-            <div className="observationBody">
-                <h2>Common Name</h2>
-                <h4>City, State, Country</h4>
-                <h4>mm / dd / yyyy</h4>
-            </div>
+          <div>
+              <img src="https://i.imgur.com/vUIeSyY.jpg" className="observationImage"/>
+          </div>
+          <div className="observationBody">
+              <h2>Common Name</h2>
+              <h4>City, State, Country</h4>
+              <h4>mm / dd / yyyy</h4>
+          </div>
+        {/* map over user's observations starting at div class observation */}
         </div>
+
+      </div>
     </div>
   )
 }
