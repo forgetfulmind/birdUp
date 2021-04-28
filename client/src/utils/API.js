@@ -25,7 +25,7 @@ export default {
   },
 
   submitBird: function(userData) {
-    return axios.post("apikey",
+    return axios.post(`https://vision.googleapis.com/v1/images:annotate?key=${process.env.REACT_APP_API_KEY}`,
     {
       "requests":[
         {
