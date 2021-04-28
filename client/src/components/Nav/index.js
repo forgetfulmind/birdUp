@@ -6,10 +6,10 @@ function Nav() {
       <a className="navbar-brand" href="/">
         birdUp
       </a>
-      <a href="/">
+      <a href="/logout">
         Logout
       </a>
-      <a href="/">
+      <a href="/earth">
         Map
       </a>
     </nav>
