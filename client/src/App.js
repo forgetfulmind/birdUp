@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import React from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";
@@ -13,26 +14,36 @@ import { connect } from "react-redux";
 
 
 function App({ isSignedIn}) {
-  if(isSignedIn){
+const [signIn, setSignin] = useState()
+
+useEffect(()=>{
+  setSignin(isSignedIn)
+},[isSignedIn])
+
+
+  if(signIn){
   return (
     <Router>
       <div>
         {/* <Nav /> */}
         <Switch>
-        {/* <Route exact path={"/"}>
+        {/* {  <Route exact path={"/"}>
+            <LogIn />
+          </Route> }
+          <Route exact path={"/logout"}>
             <LogIn />
           </Route>
           <Route exact path={"/login"}>
             <LogIn />
-          </Route> */}
-          {/* <Route exact path={"/members"} render={(req)=>(
-            isSignedIn ?  <Members /> : <LogIn />
-            )} /> */}
-          {/* <Route exact path={"/submitbird"} render={(req)=>(
-            isSignedIn ?  <SubmitBird /> : <LogIn />
-            )} /> */}
-          {/* {/* <Route exact path={"/earth"} render={(req)=>(
-            isSignedIn ?  <MapContainer />  : <LogIn />
+          </Route>
+          <Route exact path={"/members"} render={()=>(
+            isSignedIn ?  <Members /> : console.log("fuckyou") 
+            )} />
+          <Route exact path={"/submitbird"} render={(req)=>(
+            isSignedIn ?  <SubmitBird /> : <Redirect to="/" />
+            )} />
+           <Route exact path={"/earth"} render={(req)=>(
+            isSignedIn ?  <MapContainer />  :<Redirect to="/" />
             )} /> */}
                       <Route exact path={"/logout"}>
                       <LogIn />

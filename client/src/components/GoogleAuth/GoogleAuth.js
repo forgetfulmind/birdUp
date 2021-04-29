@@ -35,11 +35,13 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
 
   const onSignInClick = () => {
     auth.signIn();
+    window.location.assign("/members")
+
   };
 
   const onSignOutClick = () => {
     auth.signOut();
-    window.location.assign("/")
+    window.location.assign("/login")
   };
 
   const renderAuthButton = () => {
