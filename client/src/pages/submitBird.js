@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
+import { connect } from "react-redux";
 // import exifr from 'exifr'
 
 
 //create state 
-function SubmitBird() {
+function SubmitBird({userId}) {
+
+
 
 const [birdObject, setBirdObject] = useState({})
 const [birdObject64, setBirdObject64] = useState({})
-
+const [comment, setComment] = useState({})
 
   const [ currentPosition, setCurrentPosition ] = useState({});
   
@@ -25,15 +28,13 @@ const [birdObject64, setBirdObject64] = useState({})
     navigator.geolocation.getCurrentPosition(success);
   },[])
 
-  useEffect(() => {
-  }, [])
+  
 
   useEffect((event) => {
     console.log(birdObject, 17)
   },[birdObject])
 
   useEffect((event) => {
-     //console.log(birdObject64, 17)
     let base64 = birdObject64.toString()
     API.submitBird(base64.split(",")[1]).then(res => {
       console.log(res)
@@ -41,28 +42,30 @@ const [birdObject64, setBirdObject64] = useState({})
       console.log(response, 26)
 
       if(response.length > 0) {
-        let data = {
-          latitude: currentPosition.lat,
-          longitude: currentPosition.lng,
-        };
-
-        let imgData = {
-          image: birdObject
+        
+        const data = new FormData() 
+        data.append('postsImage', birdObject[0])
+        data.append('name', userId)
+        data.append('lat', currentPosition.lat)
+        data.append('lng', currentPosition.lng)
+        data.append('comment', comment)
+        
+        console.log(userId)
+        console.log(data)
+        API.uploadPost(data).then(res => console.log(res, "54"))
         }
-        }
-
-    })
-    
+    }) 
   },[birdObject64])
 
   //hand input for email and password fields into state 
   function handleInputChange(event) {
-      //console.log(event.target.files)
     
      setBirdObject([ event.target.files[0] ])
-    
-    //console.log(birdObject, 26)
   };
+  function handleCommentsChange(event) {
+    console.log(event.target.value)
+    setComment( event.target.value )
+  }
 
   //form submit handling
   function handleFormSubmit(event) {
@@ -85,17 +88,14 @@ const [birdObject64, setBirdObject64] = useState({})
             let reader = new FileReader();
             reader.readAsDataURL(birdObject[0]);
             reader.onload = function () {
-                // console.log(reader.result, 50)
-            //  setBirdObject64([reader.result]);
+            
             
             };
             reader.onloadend= function(){
-                
                 console.log("submit")
                 setBirdObject64(reader.result);
                 console.log(reader.result)
                 console.log(birdObject64,59)
-                // API.submitBird(birdObject64[0]).then(res => {console.log(res)})
             }
         }
 
@@ -113,9 +113,7 @@ const [birdObject64, setBirdObject64] = useState({})
     const context = canvas.getContext("2d")
     context.drawImage(image, 0, 0, canvas.width, canvas.height)
     setBirdObject64(canvas.toDataURL("image/jpeg", 0.8))
-    // console.log(birdObject64)
     console.log("after")
-    // API.submitBird(birdObject64[0]).then(res => {console.log(res)})
 }}
 
 
@@ -130,6 +128,11 @@ const [birdObject64, setBirdObject64] = useState({})
           placeholder="Image (required)"
           type="file"
         />
+      <Input
+          onChange={handleCommentsChange}
+          placeholder="Comments (required)"
+          type="textarea"
+        />
             <FormBtn
               onClick={handleFormSubmit}
             >
@@ -141,4 +144,10 @@ const [birdObject64, setBirdObject64] = useState({})
 
 }
 
-export default SubmitBird;
+// export default SubmitBird;
+
+const mapStateToProps = (state) => {
+  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
+};
+
+export default connect(mapStateToProps)(SubmitBird);
