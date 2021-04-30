@@ -9,7 +9,7 @@ import LogIn from "./pages/login/login"
 // import isAuthenticated from "./utils/isauthenticated"
 import SubmitBird from "./pages/submitBird.js"
 // import GoogleLogin from "./pages/login/login.js"
-import  MapContainer  from "./pages/earth"
+import  MapContainer  from "./pages/earth/earth"
 import { connect } from "react-redux";
 
 
@@ -48,9 +48,6 @@ useEffect(()=>{
                       <Route exact path={"/logout"}>
                       <LogIn />
                       </Route>
-                      <Route exact path={"/"}>
-                      <Members />
-                      </Route>
                       <Route exact path={"/members"}>
                       <Members />
                       </Route>
@@ -59,6 +56,9 @@ useEffect(()=>{
                       </Route>
                       <Route exact path={"/earth"}>
                       <MapContainer /> 
+                      </Route>
+                      <Route exact path={"/"}>
+                      <Members />
                       </Route>
                       <Route>
                         <NoMatch />

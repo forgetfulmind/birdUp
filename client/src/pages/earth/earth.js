@@ -1,12 +1,15 @@
 import React,  { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import Nav from "../../components/Nav"
+import style from "./style.css"
 
 
 const MapContainer = () => {
   
   const mapStyles = {        
-    height: "50vh",
-    width: "50%"};
+    height: "70vh",
+    width: "70%"};
+
   
   const defaultCenter = {
     lat: 41.3851, lng: 2.1734
@@ -71,7 +74,8 @@ const MapContainer = () => {
   
   return (
      <LoadScript
-       googleMapsApiKey='REACT_APP_API_KEY'>
+       googleMapsApiKey={process.env.REACT_APP_API_KEY}>
+         <div className="mappy">
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={13}
@@ -99,6 +103,8 @@ const MapContainer = () => {
             )
 }
      </GoogleMap>
+     </div>
+     <Nav />
      </LoadScript>
   )
 }
