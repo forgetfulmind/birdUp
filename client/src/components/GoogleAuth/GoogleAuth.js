@@ -34,14 +34,12 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   };
 
   const onSignInClick = () => {
-    auth.signIn();
-    window.location.assign("/members")
-
+    auth.signIn()
+    .then(res => {window.location.assign("/members")})
   };
 
   const onSignOutClick = () => {
     auth.signOut();
-    window.location.assign("/login")
   };
 
   const renderAuthButton = () => {
