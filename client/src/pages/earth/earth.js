@@ -3,11 +3,13 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import Nav from "../../components/Nav"
 import style from "./style.css"
 
+
 const MapContainer = () => {
   
   const mapStyles = {        
     height: "70vh",
     width: "70%"};
+
   
   const defaultCenter = {
     lat: 41.3851, lng: 2.1734

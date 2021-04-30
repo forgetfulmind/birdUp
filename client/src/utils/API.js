@@ -41,6 +41,10 @@ export default {
         }
       ]
     })
-  } 
+  }, 
+
+  uploadPost: function(userData) {
+    return axios.post("api/posts", userData, {headers:{ContentType:`multipart-form-data`}})
+  }
 
 };
