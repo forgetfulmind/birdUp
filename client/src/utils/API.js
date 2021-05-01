@@ -60,6 +60,10 @@ export default {
   //delete posts
   deletePost: function(id){
     return axios.delete("api/posts/" + id)
+  },
+
+  getPost: function(id){
+    return axios.get("/api/post/" + id)
   }
 
 };

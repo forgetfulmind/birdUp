@@ -38,6 +38,12 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
+    findPost: function(req, res) { //finds by Post ID
+        db.Posts
+          .findById(req.params.id)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+    },
     remove: function(req, res) {
         db.Posts
           .findById({ _id: req.params.id })
