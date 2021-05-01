@@ -31,7 +31,7 @@ const [comment, setComment] = useState({})
   
 
   useEffect((event) => {
-    console.log(birdObject, 17)
+    // console.log(birdObject, 17)
   },[birdObject])
 
   useEffect((event) => {
@@ -39,7 +39,7 @@ const [comment, setComment] = useState({})
     API.submitBird(base64.split(",")[1]).then(res => {
       console.log(res)
       let response = res.data.responses[0].labelAnnotations.filter(desc => desc.description === "Bird")
-      console.log(response, 26)
+      // console.log(response, 26)
 
       if(response.length > 0) {
         
@@ -63,7 +63,7 @@ const [comment, setComment] = useState({})
      setBirdObject([ event.target.files[0] ])
   };
   function handleCommentsChange(event) {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setComment( event.target.value )
   }
 
@@ -72,7 +72,7 @@ const [comment, setComment] = useState({})
     event.preventDefault();
     if(birdObject) {
        //grab data from form;
-        console.log (birdObject[0].size);
+        // console.log (birdObject[0].size);
         if(parseInt(birdObject[0].size)> 1400000) {
             let reader = new FileReader();
             reader.readAsDataURL(birdObject[0]);
@@ -80,7 +80,7 @@ const [comment, setComment] = useState({})
             setBirdObject64([reader.result]);
             };
             reader.onloadend= function(){
-                console.log(birdObject64)
+                // console.log(birdObject64)
                 console.log("before")
                 resize();
             }

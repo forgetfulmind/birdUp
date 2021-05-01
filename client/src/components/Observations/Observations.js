@@ -1,43 +1,63 @@
 import React, { useState, useEffect } from "react";
-import { getObservations } from "../../utils/userObservations"
+// import { getObservations } from "../../utils/userObservations"
 import style from "./style.css"
-// import API from "../utils/API";
+import API from "../../utils/API";
+import { connect } from "react-redux";
+import { FormBtn } from "../Form/index"
 
-function Observations() {
+function Observations({userId}) {
     
     //create state 
     const [observationData, setObservationData] = useState([])
+    
+    function loadPosts(){
+      API.getUserObservations(userId)
+      .then(observations => {
+        setObservationData(observations.data)
+      })
+    }
 
     useEffect(()=>{
-      let mounted = true
-      getObservations()
-      .then(observations => {
-        if(mounted){
-          setObservationData(observations)
-        }
-      })
-    }, [])
+      loadPosts()
+    },[])
+
+    function deletePost(id) {
+      API.deletePost(id)
+        .then(res => loadPosts())
+        .catch(err => console.log(err));
+    } 
 
     return (
     <div className="ObservationBlock">
       <h2>Username's Observations</h2>
 
       <div className="ObservationContainer">
-      {observationData.map(observations=>
-        <div className="observation">
+      {observationData ? observationData.map (observations=>
+        <div className="observation" key={observations._id}>
           <div>
-              <img src={observations.imgSrc} className="observationImage"/>
+              <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImage"/>
           </div>
           <div className="observationBody">
-            <h2>Common Name: {observations.commonName}</h2>
-            <h4>Location: {observations.location}</h4>
-            <h4>Date: {observations.date}</h4>
+            <h4>Location: {parseFloat(observations.lat).toFixed('2')}, {parseFloat(observations.lng).toFixed('2')}</h4>
+            <h4>Date: {observations.createdAt.split('T')[0]}</h4>
+            {observations.comment ? <p>Comments: {observations.comment}</p> : <p></p>}
           </div>
+          <FormBtn onClick={()=>deletePost(observations._id)}>
+            Delete
+          </FormBtn>
         </div>      
-        )}
+        ):
+        <p>this messed up</p>
+        }
       </div>   
     </div>
   )
 }
 
-export default Observations
+// export default Observations
+
+const mapStateToProps = (state) => {
+  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
+};
+
+export default connect(mapStateToProps)(Observations);

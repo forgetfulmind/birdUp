@@ -23,5 +23,26 @@ module.exports = {
         .create(posts)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err.message));
-    }
+    },
+    findAll: function(req, res) {
+        db.Posts
+          .find(req.query)
+          .sort({ createdAt: -1 })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+      findById: function(req, res) { //finds by USER ID, not post ID
+        db.Posts
+          .find({name: req.params.id})
+          .sort({ createdAt: -1 })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+    },
+    remove: function(req, res) {
+        db.Posts
+          .findById({ _id: req.params.id })
+          .then(dbModel => dbModel.remove())
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      }
 }

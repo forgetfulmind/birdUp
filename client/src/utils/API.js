@@ -45,6 +45,21 @@ export default {
 
   uploadPost: function(userData) {
     return axios.post("api/posts", userData, {headers:{ContentType:`multipart-form-data`}})
+  },
+
+  //get all
+  getObservations: function(){
+    return axios.get("api/posts")
+  },
+
+  //get observations by user ID
+  getUserObservations: function(id){
+    return axios.get("api/posts/" + id)
+  },
+
+  //delete posts
+  deletePost: function(id){
+    return axios.delete("api/posts/" + id)
   }
 
 };

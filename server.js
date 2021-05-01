@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static('public')) //serving public src for images
 
 // Serve up static assets (usually on heroku)
         if (process.env.NODE_ENV === "production") {
