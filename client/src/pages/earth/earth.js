@@ -2,10 +2,30 @@ import React,  { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import Nav from "../../components/Nav"
 import style from "./style.css"
+import { connect } from "react-redux";
+import API from "../../utils/API"
 
 
-const MapContainer = () => {
-  
+const MapContainer = ({userId}) => {
+  //loading info
+  const [observationData, setObservationData] = useState([])
+    
+    function loadPosts(){
+      API.getObservations()
+      .then(observations => {
+        setObservationData(observations.data)
+      })
+    }
+
+    useEffect(()=>{
+      loadPosts()
+    },[])
+
+
+
+
+
+  // Begin map information  
   const mapStyles = {        
     height: "70vh",
     width: "70%"};
@@ -56,8 +76,8 @@ const MapContainer = () => {
   
   const success = position => {
     const userPosition = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
+      lat: parseFloat(position.coords.latitude),
+      lng: parseFloat(position.coords.longitude)
     }
     setCurrentPosition(userPosition);
   };
@@ -81,9 +101,24 @@ const MapContainer = () => {
           zoom={13}
           center={currentPosition}>
          {
-            locations.map(item => {
+            observationData.map(item => {
+              let pin = 
+                {
+                  createdAt: item.createdAt,
+                  image: item.image,
+                  id: item._id,
+                  comment: item.comment,
+                  location: { 
+                      lat: parseFloat(item.lat),
+                      lng: parseFloat(item.lng) 
+                  },
+                }
+              // let location = { 
+              //   lat: parseFloat(item.lat),
+              //   lng: parseFloat(item.lng) 
+              // }
               return (
-              <Marker key={item.name} position={item.location} onClick={() => onSelect(item)}/>
+              <Marker key={pin.createdAt} position={pin.location} onClick={() => onSelect(pin)}/>
               )
             })
          }
@@ -96,8 +131,11 @@ const MapContainer = () => {
               onCloseClick={() => setSelected({})}
             >
               <div>
-              <p>{selected.name}</p>
+              <p>{selected.comment}</p>
               <a href="">{selected.name}</a>
+              <div>
+              <img src={`/Images/2021${selected.image.split('2021')[1]}`} className="observationImage"/>
+          </div>
               </div>
             </InfoWindow>
             )
@@ -108,4 +146,9 @@ const MapContainer = () => {
      </LoadScript>
   )
 }
-export default MapContainer;
+
+const mapStateToProps = (state) => {
+  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
+};
+
+export default connect(mapStateToProps)(MapContainer);
