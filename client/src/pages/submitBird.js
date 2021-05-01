@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
 import { connect } from "react-redux";
+import Nav from "../components/Nav"
 // import exifr from 'exifr'
 
 
@@ -139,6 +140,7 @@ const [comment, setComment] = useState({})
             Submit
             </FormBtn>
     </form>
+    <Nav />
     </div>
     )
 

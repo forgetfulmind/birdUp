@@ -12,6 +12,9 @@ function Nav() {
       <a href="/earth">
         Map
       </a>
+      <a href="/submitBird">
+        Post
+      </a>
     </nav>
   );
 }
