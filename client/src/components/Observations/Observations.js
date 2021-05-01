@@ -4,6 +4,8 @@ import style from "./style.css"
 import API from "../../utils/API";
 import { connect } from "react-redux";
 import { FormBtn } from "../Form/index"
+import { Link } from "react-router-dom"
+
 
 function Observations({userId}) {
     
@@ -42,6 +44,10 @@ function Observations({userId}) {
             <h4>Date: {observations.createdAt.split('T')[0]}</h4>
             {observations.comment ? <p>Comments: {observations.comment}</p> : <p></p>}
           </div>
+          <Link to={"/post/" + observations._id}>
+            <p> View Post </p>
+          
+          </Link>
           <FormBtn onClick={()=>deletePost(observations._id)}>
             Delete
           </FormBtn>

@@ -11,6 +11,7 @@ import SubmitBird from "./pages/submitBird.js"
 // import GoogleLogin from "./pages/login/login.js"
 import  MapContainer  from "./pages/earth/earth"
 import { connect } from "react-redux";
+import UserPosts from "./pages/UserPosts/UserPosts"
 
 
 function App({ isSignedIn}) {
@@ -56,6 +57,9 @@ useEffect(()=>{
                       </Route>
                       <Route exact path={"/earth"}>
                       <MapContainer /> 
+                      </Route>
+                      <Route exact path={"/post/:id"}>
+                      <UserPosts />
                       </Route>
                       <Route exact path={"/"}>
                       <Members />

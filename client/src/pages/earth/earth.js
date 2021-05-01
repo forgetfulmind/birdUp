@@ -4,6 +4,7 @@ import Nav from "../../components/Nav"
 import style from "./style.css"
 import { connect } from "react-redux";
 import API from "../../utils/API"
+import { Link } from "react-router-dom"
 
 
 const MapContainer = ({userId}) => {
@@ -133,6 +134,10 @@ const MapContainer = ({userId}) => {
               <div>
               <p>{selected.comment}</p>
               <a href="">{selected.name}</a>
+              <Link to={"/post/" + selected.id}>
+            <p> View Post </p>
+          
+          </Link>
               <div>
               <img src={`/Images/2021${selected.image.split('2021')[1]}`} className="observationImage"/>
           </div>
