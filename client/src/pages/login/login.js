@@ -6,6 +6,7 @@ import style from "./style.css"
 // import Login from "../../components/Login/login"
 import birdUp from "../../assets/birdUp.svg"
 import GoogleAuth from "../../components/GoogleAuth/GoogleAuth"
+import Nav from "../../components/Nav/index"
 //create state 
 function LogIn() {
 

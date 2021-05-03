@@ -50,25 +50,15 @@ function Posts({userId}) {
 
     // Begin map information  
   const mapStyles = {        
-    height: "70vh",
+    height: "40vh",
     width: "70%"};
 
     const [ currentPosition, setCurrentPosition ] = useState({});
-  
-//   const success = position => {
-//     const userPosition = {
-//       lat: parseFloat(position.coords.latitude),
-//       lng: parseFloat(position.coords.longitude)
-//     }
-//     setCurrentPosition(userPosition);
-//   };
-  
  
-   
 
     
     return (
-        <div>
+        <div className={"contain"}>
             <LoadScript
        googleMapsApiKey={process.env.REACT_APP_API_KEY}>
        
@@ -78,7 +68,7 @@ function Posts({userId}) {
             <Row>
                 <Col size='md-6'>
                 <div>
-              <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImage"/>
+              <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="imageLarge"/>
           </div>
                 </Col>
                 <Col size='md-6'>

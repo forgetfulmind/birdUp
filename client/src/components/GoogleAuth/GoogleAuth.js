@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as AuthorizationAction from "../../framework/redux/module/Authorization";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   const [auth, setAuth] = useState(null);
@@ -35,11 +36,11 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
 
   const onSignInClick = () => {
     auth.signIn()
-    .then(res => {window.location.assign("/members")})
   };
 
   const onSignOutClick = () => {
-    auth.signOut();
+    auth.signOut()
+        .then(res => {window.location.assign("/")})
   };
 
   const renderAuthButton = () => {
@@ -48,7 +49,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
     } else if (isSignedIn) {
       return (
         <div>
-          <span>{userId}</span>
+          {/* <span>{userId}</span> */}
           <button onClick={onSignOutClick}>Signout</button>
         </div>
       );
