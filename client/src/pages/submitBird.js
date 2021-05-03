@@ -9,8 +9,6 @@ import Nav from "../components/Nav"
 //create state 
 function SubmitBird({userId}) {
 
-
-
 const [birdObject, setBirdObject] = useState({})
 const [birdObject64, setBirdObject64] = useState({})
 const [comment, setComment] = useState({})
@@ -38,41 +36,58 @@ const [comment, setComment] = useState({})
   useEffect((event) => {
     let base64 = birdObject64.toString()
     API.submitBird(base64.split(",")[1]).then(res => {
-      console.log(res)
+      // console.log(res)
       let response = res.data.responses[0].labelAnnotations.filter(desc => desc.description === "Bird")
       // console.log(response, 26)
 
+//IF BIRD DO THIS
       if(response.length > 0) {
-        
         const data = new FormData() 
         data.append('postsImage', birdObject[0])
         data.append('name', userId)
         data.append('lat', currentPosition.lat)
         data.append('lng', currentPosition.lng)
         data.append('comment', comment)
-        
-        console.log(userId)
-        console.log(data)
-        API.uploadPost(data).then(res => console.log(res, "54"))
+        // console.log(userId)
+        // console.log(data)
+        API.uploadPost(data)
+          .then(res => console.log(res, "response"))
+          let alert = document.getElementById("alert")
+          alert.textContent = "Upload was a Success!"
+          setInterval(() => {
+            alert.textContent = ""
+          }, 2000);
+          document.getElementById("submitForm").reset();
+
+//IF NO BIRD DO THIS           
+        }else{ 
+          let alert = document.getElementById("alert")
+          alert.textContent = "Sorry no bird was found in this image, please upload another"
+          setInterval(() => {
+            alert.textContent = ""
+          }, 2000);
+          document.getElementById("submitForm").reset();
         }
     }) 
   },[birdObject64])
 
-  //hand input for email and password fields into state 
+//handle hook for image input
   function handleInputChange(event) {
-    
      setBirdObject([ event.target.files[0] ])
   };
+
+//handle hook for comment input
   function handleCommentsChange(event) {
     // console.log(event.target.value)
     setComment( event.target.value )
   }
 
-  //form submit handling
+//form submit handling
   function handleFormSubmit(event) {
     event.preventDefault();
     if(birdObject) {
-       //grab data from form;
+
+//
         // console.log (birdObject[0].size);
         if(parseInt(birdObject[0].size)> 1400000) {
             let reader = new FileReader();
@@ -82,7 +97,7 @@ const [comment, setComment] = useState({})
             };
             reader.onloadend= function(){
                 // console.log(birdObject64)
-                console.log("before")
+                // console.log("before")
                 resize();
             }
         }else{
@@ -95,8 +110,8 @@ const [comment, setComment] = useState({})
             reader.onloadend= function(){
                 console.log("submit")
                 setBirdObject64(reader.result);
-                console.log(reader.result)
-                console.log(birdObject64,59)
+                // console.log(reader.result)
+                // console.log(birdObject64,59)
             }
         }
 
@@ -114,7 +129,7 @@ const [comment, setComment] = useState({})
     const context = canvas.getContext("2d")
     context.drawImage(image, 0, 0, canvas.width, canvas.height)
     setBirdObject64(canvas.toDataURL("image/jpeg", 0.8))
-    console.log("after")
+    // console.log("after")
 }}
 
 
@@ -122,7 +137,7 @@ const [comment, setComment] = useState({})
     return (
       <div>
         <h1>Save observations.</h1>
-      <form encType="multipart/form-data">
+      <form id={"submitForm"} encType="multipart/form-data">
         <Input
           onChange={handleInputChange}
           name="image"
@@ -131,7 +146,7 @@ const [comment, setComment] = useState({})
         />
       <Input
           onChange={handleCommentsChange}
-          placeholder="Comments (required)"
+          placeholder="Comment"
           type="textarea"
         />
             <FormBtn
@@ -140,6 +155,7 @@ const [comment, setComment] = useState({})
             Submit
             </FormBtn>
     </form>
+    <h4 id={"alert"}></h4>
     <Nav />
     </div>
     )
@@ -147,9 +163,10 @@ const [comment, setComment] = useState({})
 }
 
 // export default SubmitBird;
-
 const mapStateToProps = (state) => {
   return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
 };
+
+
 
 export default connect(mapStateToProps)(SubmitBird);

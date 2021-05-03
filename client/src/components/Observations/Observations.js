@@ -45,7 +45,9 @@ function Observations({userId}) {
             {observations.comment ? <p>Comments: {observations.comment}</p> : <p></p>}
           </div>
           <Link to={"/post/" + observations._id}>
-            <p> View Post </p>
+            <FormBtn>
+              View Post
+            </FormBtn>
           
           </Link>
           <FormBtn onClick={()=>deletePost(observations._id)}>
