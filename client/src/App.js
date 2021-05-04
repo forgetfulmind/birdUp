@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
 import Members from "./pages/members/members"
+import EditProfile from "./pages/editProfile/editProfile";
 import LogIn from "./pages/login/login"
-import SubmitBird from "./pages/submitBird.js"
+import SubmitBird from "./pages/submitBird/submitBird.js"
 import  MapContainer  from "./pages/earth/earth"
 import { connect } from "react-redux";
 import UserPosts from "./pages/UserPosts/UserPosts"
@@ -28,6 +29,9 @@ function App({ isSignedIn}) {
           </Route>
           <Route exact path={"/members"}>
             <Members />
+          </Route>
+          <Route exact path={"/edit"}>
+            <EditProfile />
           </Route>
           <Route exact path={"/submitBird"}>
             <SubmitBird />

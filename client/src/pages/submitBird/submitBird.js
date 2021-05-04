@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import API from "../utils/API";
-import { Input, FormBtn } from "../components/Form";
+import API from "../../utils/API";
+import placeholder from './imageplaceholder.png';
+import { Input, FormBtn } from "../../components/Form";
 import { connect } from "react-redux";
-import Nav from "../components/Nav"
+import Nav from "../../components/Nav"
+import './style.css'
 // import exifr from 'exifr'
 
 
@@ -12,6 +14,20 @@ function SubmitBird({userId}) {
 const [birdObject, setBirdObject] = useState({})
 const [birdObject64, setBirdObject64] = useState({})
 const [comment, setComment] = useState({})
+const [{alt, src}, setImg] = useState({
+  src: placeholder,
+  alt: 'Upload an Image'
+})
+
+const handleImg = (e) => {
+  if(e.target.files[0]) {
+      setImg({
+          src: URL.createObjectURL(e.target.files[0]),
+          alt: e.target.files[0].name
+      });  
+  }   
+  setBirdObject([ e.target.files[0] ])  
+}
 
   const [ currentPosition, setCurrentPosition ] = useState({});
   
@@ -56,7 +72,7 @@ const [comment, setComment] = useState({})
           alert.textContent = "Upload was a Success!"
           setInterval(() => {
             alert.textContent = ""
-          }, 2000);
+          }, 5000);
           document.getElementById("submitForm").reset();
 
 //IF NO BIRD DO THIS           
@@ -65,7 +81,7 @@ const [comment, setComment] = useState({})
           alert.textContent = "Sorry no bird was found in this image, please upload another"
           setInterval(() => {
             alert.textContent = ""
-          }, 2000);
+          }, 5000);
           document.getElementById("submitForm").reset();
         }
     }) 
@@ -73,7 +89,7 @@ const [comment, setComment] = useState({})
 
 //handle hook for image input
   function handleInputChange(event) {
-     setBirdObject([ event.target.files[0] ])
+     handleImg(event)
   };
 
 //handle hook for comment input
@@ -155,6 +171,9 @@ const [comment, setComment] = useState({})
             Submit
             </FormBtn>
     </form>
+    <div className="form__img-input-container">
+                <img src={src} alt={alt} className="form-img__img-preview"/>
+            </div>
     <h4 id={"alert"}></h4>
     <Nav />
     </div>

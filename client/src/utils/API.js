@@ -17,11 +17,17 @@ export default {
   // saveBook: function(bookData) {
   //   return axios.post("/api/books", bookData);
   // }
-  logIn: function(userData){
-    return axios.post("/api/login", userData)
-  },
+  // logIn: function(userData){
+  //   return axios.post("/api/login", userData)
+  // },
   saveUser: function(userData){
-    return axios.post("/api/users", userData)
+    return axios.post("/api/users", userData, {headers:{ContentType:`multipart-form-data`}})
+  },
+  updateUser: function(id, userData){
+    return axios.put("/api/users/" +id, userData, {headers:{ContentType:`multipart-form-data`}})
+  },
+  findUser: function(id){
+    return axios.get("/api/users/" + id)
   },
 
   submitBird: function(userData) {
