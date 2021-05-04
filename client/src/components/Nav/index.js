@@ -5,15 +5,15 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg">
 
-       <Link to="/members">Home</Link>
+       <Link to="/members" className="link">Home</Link>
 
-       <Link to="/edit">Update Profile</Link>
+       <Link to="/edit" className="link">Update Profile</Link>
 
-        <Link to="/earth">Map</Link>
+        <Link to="/earth" className="link">Map</Link>
 
-        <Link to="/submitBird">Post</Link>
+        <Link to="/submitBird" className="link">Post</Link>
 
-        <Link to="/logout">Logout</Link>
+        <Link to="/logout" className="link">Logout</Link>
     </nav>
   );
 }
