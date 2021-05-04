@@ -41,18 +41,18 @@ function UserPage({userId}) {
       <div className="mainImage d-flex justify-content-center align-items-center flex-column">
         <div className="filter">
          <div className="boxHeading">
-            <span className="heading">
-              { userProfile.length !== 0 ? <h1>{userProfile.data[0].username}</h1> : <p>BirdUp User</p> }
-            </span>
             <div className="userProps">
-              {userProfile.length !==0 ? <p>{userProfile.data[0].createdAt.split("T")[0]}</p> : <p>None</p>}
-              { observationData.length !==0 ? <p> {observationData.length} </p> : <p>Null</p> }
               { userProfile.length !== 0 ? <img src={`/Images/2021${userProfile.data[0].profileimage.split(2021)[1]}`} className="observationImage"/> : <img />}
             </div>
+            <span className="heading">
+              { userProfile.length !== 0 ? <h1>{userProfile.data[0].username}</h1> : <p>BirdUp User</p> }
+              <span>Observations: { observationData.length !==0 ? <span> {observationData.length} </span> : <span> Null</span> }</span>
+              <span>Joined: {userProfile.length !==0 ? <span> {userProfile.data[0].createdAt.split("T")[0]}</span> : <span> None</span>}</span>
+            </span>
           </div>
         </div>
-        <div className="search">
-        </div>
+        {/* <div className="search">
+        </div> */}
       </div>
         <Nav />
     </div>

@@ -161,30 +161,33 @@ function EditProfile({userId}) {
 
 
     return(
-        <div>
+        <div style={{display: "flex", flexDirection:"column", alignItems:"center"}}>
             <h1>Edit Your Profile here.</h1>
-            <form id={"submitForm"} encType="multipart/form-data">
-            <Input 
-                onChange={handleNameChange}
-                name="userName"
-                placeholder="Enter your new Username here."
-            />
-            <Input
-                onChange={handleImg}
-                name="image"
-                placeholder="Select a profile image."
-                type="file"
-            />
-            <FormBtn
-              onClick={handleFormSubmit}>
-            Submit
-            </FormBtn>
-            </form>
-            <div className="form__img-input-container">
-                <img src={src} alt={alt} className="form-img__img-preview"/>
+            <div className="formContainer">
+                
+                <form id={"submitForm"} encType="multipart/form-data">
+                <Input 
+                    onChange={handleNameChange}
+                    name="userName"
+                    placeholder="Enter your new Username here."
+                />
+                <Input
+                    onChange={handleImg}
+                    name="image"
+                    placeholder="Select a profile image."
+                    type="file"
+                />
+                <button
+                onClick={handleFormSubmit}>
+                Submit
+                </button>
+                </form>
+                <div className="form__img-input-container">
+                    <img src={src} alt={alt} className="form-img__img-preview"/>
+                </div>
+                <h4 id={"alert"}></h4>
+                <Nav />
             </div>
-            <h4 id={"alert"}></h4>
-            <Nav />
         </div>
     )
 }
