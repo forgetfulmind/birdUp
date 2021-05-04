@@ -87,7 +87,7 @@ function EditProfile({userId}) {
                 })
                 .then((res) => {
                     console.log(res)
-                    if(!res.data.length === 0) {
+                    if(res.data.length === 0) {
                         console.log('saved')
                         API.saveUser(data).then(res => console.log(res, "52"))
                         document.getElementById("submitForm").reset();
