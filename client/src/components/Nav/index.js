@@ -7,6 +7,8 @@ function Nav() {
 
        <Link to="/members">Home</Link>
 
+       <Link to="/edit">Update Profile</Link>
+
         <Link to="/earth">Map</Link>
 
         <Link to="/submitBird">Post</Link>
