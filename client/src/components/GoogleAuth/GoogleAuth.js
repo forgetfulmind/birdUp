@@ -12,6 +12,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
         process.env.REACT_APP_GOOGLE_CLOUDID,
       scope: "email",
     };
+    console.log(params)
 
     window.gapi.load("client:auth2", () => {
       window.gapi.client.init(params).then(() => {
