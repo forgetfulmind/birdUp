@@ -6,7 +6,6 @@ import style from "./style.css"
 // import Login from "../../components/Login/login"
 import birdUp from "../../assets/birdUp.svg"
 import GoogleAuth from "../../components/GoogleAuth/GoogleAuth"
-import Nav from "../../components/Nav/index"
 //create state 
 function LogIn() {
 
@@ -54,9 +53,9 @@ function LogIn() {
             <h2 className="birdUp">Bird<strong>Up</strong></h2>
             <img src={birdUp} className="emblem"/>
           </div>
+          <GoogleAuth />
         {/* <h1>Login</h1> */}
         {/* <Login /> */}
-        <GoogleAuth />
         {/* <form>
           <Input
             onChange={handleInputChange}
@@ -81,10 +80,5 @@ function LogIn() {
     )
 
 }
-
-
-
-
-
 
 export default LogIn;
