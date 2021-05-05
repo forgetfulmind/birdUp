@@ -151,30 +151,32 @@ const handleImg = (e) => {
 
 
     return (
-      <div>
-        <h1>Save observations.</h1>
-      <form id={"submitForm"} encType="multipart/form-data">
+      <div style={{display: "flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"60vh"}}>
+      <div className="formContainer">
+        <form id={"submitForm"} encType="multipart/form-data">
+        <h4>Save observations</h4>
+          <Input
+            onChange={handleInputChange}
+            name="image"
+            placeholder="Image (required)"
+            type="file"
+          />
         <Input
-          onChange={handleInputChange}
-          name="image"
-          placeholder="Image (required)"
-          type="file"
-        />
-      <Input
-          onChange={handleCommentsChange}
-          placeholder="Comment"
-          type="textarea"
-        />
-            <FormBtn
-              onClick={handleFormSubmit}
-            >
-            Submit
-            </FormBtn>
-    </form>
-    <div className="form__img-input-container">
-                <img src={src} alt={alt} className="form-img__img-preview"/>
-            </div>
-    <h4 id={"alert"}></h4>
+            onChange={handleCommentsChange}
+            placeholder="Comment"
+            type="textarea"
+          />
+              <button
+                onClick={handleFormSubmit}
+              >
+              Submit
+              </button>
+      </form>
+      <div className="form__img-input-container">
+        <img src={src} alt={alt} className="form-img__img-preview"/>
+      </div>
+      <h4 id={"alert"}></h4>
+      </div>
     <Nav />
     </div>
     )
