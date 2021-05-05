@@ -119,7 +119,7 @@ const MapContainer = ({userId}) => {
               //   lng: parseFloat(item.lng) 
               // }
               return (
-              <Marker key={pin.createdAt} position={pin.location} onClick={() => onSelect(pin)}/>
+              <Marker options={{icon: {url: require("../../assets/bird-1232416_1920.png"), scaledSize: {width: 100, height: 100}}}} key={pin.createdAt} position={pin.location} onClick={() => onSelect(pin)}/>
               )
             })
          }
