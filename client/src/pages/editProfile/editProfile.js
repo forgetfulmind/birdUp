@@ -161,11 +161,13 @@ function EditProfile({userId}) {
 
 
     return(
-        <div style={{display: "flex", flexDirection:"column", alignItems:"center"}}>
-            <h1>Edit Your Profile here.</h1>
+        <div style={{display: "flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"60vh"}}>
+            
             <div className="formContainer">
                 
                 <form id={"submitForm"} encType="multipart/form-data">
+                <h4>Edit Your Profile</h4>
+                
                 <Input 
                     onChange={handleNameChange}
                     name="userName"
