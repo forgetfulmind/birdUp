@@ -33,7 +33,6 @@ function UserPage({userId}) {
     loadPosts()
     // if(userProfile.data){
     //   console.log(userProfile)
-
     return (
     <div className="wrapper"> 
       <div className="mainImage d-flex justify-content-center align-items-center flex-column">
@@ -48,13 +47,12 @@ function UserPage({userId}) {
               <span>Joined: {userProfile && userProfile !== [] ? <span> {userProfile.data?.[0]?.createdAt.split("T")[0]}</span> : null}</span>
             </span>
           </div>
+            <Nav />
         </div>
-        {/* <div className="search">
-        </div> */}
-      </div>
-        <Nav />
-    </div>
-  )
+      )
+    // }else {
+    //   return null
+    // }
 }
 
 const mapStateToProps = (state) => {

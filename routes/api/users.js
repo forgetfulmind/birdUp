@@ -11,10 +11,11 @@ const uploadMulter = require('../../client/src/utils/middleWare/upload.js')
 const validation = require('../../client/src/utils/middleWare/validation.js')
 
 //controllers
-const { create, update, findById } = require('../../controllers/userController.js');
+const { create, update, findById, createDefault } = require('../../controllers/userController.js');
 
 
 router.post('/',uploadMulter, validation, create);
+router.post('/default', createDefault);
 router.put('/:id', uploadMulter, validation, update)
 router.get('/:id', findById)
 // router.delete('/:id', postsController.remove)
