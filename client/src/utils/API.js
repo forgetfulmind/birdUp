@@ -23,6 +23,9 @@ export default {
   saveUser: function(userData){
     return axios.post("/api/users", userData, {headers:{ContentType:`multipart-form-data`}})
   },
+  saveDefault: function(userData){
+    return axios.post("/api/users/default", userData, {headers:{ContentType:`multipart-form-data`}})
+  },
   updateUser: function(id, userData){
     return axios.put("/api/users/" +id, userData, {headers:{ContentType:`multipart-form-data`}})
   },

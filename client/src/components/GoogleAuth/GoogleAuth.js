@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as AuthorizationAction from "../../framework/redux/module/Authorization";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import API from "../../utils/API"
 
 const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   const [auth, setAuth] = useState(null);
@@ -37,6 +38,22 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
 
   const onSignInClick = () => {
     auth.signIn()
+    .then((res)=>{
+      // console.log(res, "res from signIN")
+      const data = {
+        'username': res.ft.Qt.split("@")[0].toString(),
+        'image': "./2021-default.png", 
+        'userId': res.ft.tS.toString()
+      }
+      API.findUser(res.ft.tS)
+      .then(res => {
+        console.log(res, "found user")
+          if(res.data.length === 0) {
+            // console.log('saved')
+            API.saveDefault(data).then(res => console.log(res, "52"))
+            }
+          })
+    })
   };
 
   const onSignOutClick = () => {
