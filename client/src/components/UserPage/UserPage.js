@@ -49,10 +49,11 @@ function UserPage({userId}) {
           </div>
             <Nav />
         </div>
+        </div>
+        </div>
       )
-    // }else {
-    //   return null
-    // }
+      
+
 }
 
 const mapStateToProps = (state) => {
