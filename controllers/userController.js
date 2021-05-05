@@ -29,6 +29,25 @@ create: function(req, res) {
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err.message));
 },
+createDefault: function(req, res) {
+    console.log(req)
+    let username = req.body.username;
+    let profileimage = req.body.image
+    let userId = req.body.userId;
+    
+    //sets what to save
+    const user ={
+        username: username,
+        profileimage: profileimage,
+        userId: userId
+              
+    }
+    console.log('create default user')
+    db.User
+    .create(user)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err.message));
+},
 findById: function(req, res) { //finds by USER ID, not post ID
     db.User
       .find({userId: req.params.id})

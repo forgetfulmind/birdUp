@@ -25,7 +25,7 @@ function App({ isSignedIn}) {
       <div>
         <Switch>
           <Route exact path={"/"}> 
-            <Members />
+            <Members/>
           </Route>
           <Route exact path={"/members"}>
             <Members />
