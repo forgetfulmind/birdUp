@@ -31,29 +31,36 @@ function Observations({userId}) {
 
     return (
     <div className="ObservationBlock">
-      <h2>Username's Observations</h2>
 
       <div className="ObservationContainer">
-      {observationData ? observationData.map (observations=>
-        <div className="observation" key={observations._id}>
-          <div>
+        {observationData ? observationData.map (observations=>
+          <div className="observation" key={observations._id}>
+            
+            <div>
               <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImage"/>
-          </div>
-          <div className="observationBody">
-            <h4>Location: {parseFloat(observations.lat).toFixed('2')}, {parseFloat(observations.lng).toFixed('2')}</h4>
-            <h4>Date: {observations.createdAt.split('T')[0]}</h4>
-            {observations.comment ? <p>Comments: {observations.comment}</p> : <p></p>}
-          </div>
-          <Link to={"/post/" + observations._id}>
-            <p> View Post </p>
-          
-          </Link>
-          <FormBtn onClick={()=>deletePost(observations._id)}>
-            Delete
-          </FormBtn>
-        </div>      
-        ):
-        <p>this messed up</p>
+            </div>
+            
+            <div className="observationBody">
+              <h4>Location: {parseFloat(observations.lat).toFixed('2')}, {parseFloat(observations.lng).toFixed('2')}</h4>
+              <h4>Date: {observations.createdAt.split('T')[0]}</h4>
+              {observations.comment ? <p>Comments: {observations.comment}</p> : <p></p>}
+            </div>
+
+            <div className="buttons">
+              <Link to={"/post/" + observations._id}>
+                <button className="button">
+                  View Post
+                </button>
+              </Link>
+
+              <button onClick={()=>deletePost(observations._id)} className="button">
+                Delete
+              </button>
+            </div>
+
+          </div>      
+          ):
+          <p>No observations yet!</p>
         }
       </div>   
     </div>

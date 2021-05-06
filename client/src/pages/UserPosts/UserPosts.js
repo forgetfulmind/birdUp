@@ -50,6 +50,7 @@ function Posts({userId}) {
 
     // Begin map information  
   const mapStyles = {        
+
     height: "30vh",
     width: "90%"};
 
@@ -59,6 +60,7 @@ function Posts({userId}) {
     
     return (
         <div className='mainContainer'>
+
             <LoadScript
        googleMapsApiKey={process.env.REACT_APP_API_KEY}>
        
@@ -67,10 +69,12 @@ function Posts({userId}) {
         <Container fluid>
         <div className='infoRow'>
             <Row>
+
                 <Col size='md-8'>
                 <div className='imageDiv'>
                 <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImg"/>
                 </div>
+
                 </Col>
 
                 <Col size='md-4'>

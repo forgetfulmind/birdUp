@@ -5,13 +5,11 @@ import * as serviceWorker from "./serviceWorker"
 import { Provider } from "react-redux"
 import applicationStore from "./framework/redux/ApplicationStore"
 
+
 ReactDOM.render(
-<React.StrictMode>
     <Provider store={applicationStore}>
     <App />
-    </Provider>
-</React.StrictMode>, 
-
+    </Provider>,
 document.getElementById("root")
 );
 

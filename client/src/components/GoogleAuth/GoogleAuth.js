@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as AuthorizationAction from "../../framework/redux/module/Authorization";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import API from "../../utils/API"
 
 const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   const [auth, setAuth] = useState(null);
@@ -11,6 +13,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
         process.env.REACT_APP_GOOGLE_CLOUDID,
       scope: "email",
     };
+    // console.log(params)
 
     window.gapi.load("client:auth2", () => {
       window.gapi.client.init(params).then(() => {
@@ -35,11 +38,27 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
 
   const onSignInClick = () => {
     auth.signIn()
-    .then(res => {window.location.assign("/members")})
+    .then((res)=>{
+      // console.log(res, "res from signIN")
+      const data = {
+        'username': res.ft.Qt.split("@")[0].toString(),
+        'image': "./2021-default.png", 
+        'userId': res.ft.tS.toString()
+      }
+      API.findUser(res.ft.tS)
+      .then(res => {
+        console.log(res, "found user")
+          if(res.data.length === 0) {
+            // console.log('saved')
+            API.saveDefault(data).then(res => console.log(res, "52"))
+            }
+          })
+    })
   };
 
   const onSignOutClick = () => {
-    auth.signOut();
+    auth.signOut()
+        .then(res => {window.location.assign("/")})
   };
 
   const renderAuthButton = () => {
@@ -48,7 +67,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
     } else if (isSignedIn) {
       return (
         <div>
-          <span>{userId}</span>
+          {/* <span>{userId}</span> */}
           <button onClick={onSignOutClick}>Signout</button>
         </div>
       );

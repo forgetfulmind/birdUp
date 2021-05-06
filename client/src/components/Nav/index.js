@@ -1,20 +1,19 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg">
-      <a className="navbar-brand" href="/members">
-        birdUp
-      </a>
-      <a href="/logout">
-        Logout
-      </a>
-      <a href="/earth">
-        Map
-      </a>
-      <a href="/submitBird">
-        Post
-      </a>
+
+       <Link to="/members" className="link">Home</Link>
+
+       <Link to="/edit" className="link">Update Profile</Link>
+
+        <Link to="/earth" className="link">Map</Link>
+
+        <Link to="/submitBird" className="link">Post</Link>
+
+        <Link to="/logout" className="link">Logout</Link>
     </nav>
   );
 }
