@@ -43,11 +43,6 @@ const handleImg = (e) => {
     navigator.geolocation.getCurrentPosition(success);
   },[])
 
-  
-
-  // useEffect((event) => {
-  //   // console.log(birdObject, 17)
-  // },[birdObject])
 
   useEffect((event) => {
     let base64 = birdObject64.toString()
@@ -59,27 +54,8 @@ const handleImg = (e) => {
 //IF BIRD DO THIS
       if(response.length > 0) {
 
-
        getSignedRequest(birdObject[0])
     
-
-
-        // const data = new FormData() 
-        // data.append('image', imgUrl)
-        // data.append('name', userId)
-        // data.append('lat', currentPosition.lat)
-        // data.append('lng', currentPosition.lng)
-        // data.append('comment', comment)
-        // // console.log(userId)
-        // console.log(data)
-        // API.uploadPost(data)
-        //   .then(res => console.log(res, "response"))
-        //   let alert = document.getElementById("alert")
-        //   alert.textContent = "Upload was a Success!"
-        //   setInterval(() => {
-        //     alert.textContent = ""
-        //   }, 5000);
-        //   document.getElementById("submitForm").reset();
 
 //IF NO BIRD DO THIS           
         }else{ 
@@ -98,12 +74,7 @@ const handleImg = (e) => {
   useEffect((event) => {
     if (imgUrl !== "0") {
       console.log(imgUrl)       
-    //  const data = new FormData() 
-    //     data.append('image', imgUrl)
-    //     data.append('name', userId)
-    //     data.append('lat', currentPosition.lat)
-    //     data.append('lng', currentPosition.lng)
-    //     data.append('comment', comment)
+      
     let data = {
       'image':imgUrl, 
       'name':userId,
@@ -197,10 +168,6 @@ function uploadFile(file, signedRequest, url){
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4){
       if(xhr.status === 200){
-        // document.getElementById('preview').src = url;
-        // document.getElementById('avatar-url').value = url;
-        // console.log(url , "url of image")
-        // imgUrl = url
         setImgUrl(url)
       }
       else{

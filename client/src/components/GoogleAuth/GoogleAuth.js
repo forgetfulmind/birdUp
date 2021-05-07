@@ -42,7 +42,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
       // console.log(res, "res from signIN")
       const data = {
         'username': res.ft.Qt.split("@")[0].toString(),
-        'image': "https://birdup.s3.us-east-2.amazonaws.com/cock.JPG", 
+        'image': "https://birdup.s3.us-east-2.amazonaws.com/cock.jpg", 
         'userId': res.ft.tS.toString()
       }
       API.findUser(res.ft.tS)

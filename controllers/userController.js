@@ -13,7 +13,7 @@ module.exports = {
 create: function(req, res) {
     console.log(req)
     let username = req.body.username;
-    let profileimage = req.file.path
+    let profileimage = req.body.image;
     let userId = req.body.userId;
     
     //sets what to save
@@ -43,6 +43,7 @@ createDefault: function(req, res) {
               
     }
     console.log('create default user')
+    console.log(user, 'default user')
     db.User
     .create(user)
     .then(dbModel => res.json(dbModel))
@@ -57,7 +58,7 @@ findById: function(req, res) { //finds by USER ID, not post ID
 },
 update: function(req, res) {
     let username = req.body.username;
-    let profileimage = req.file.path
+    let profileimage = req.body.image;
     let userId = req.body.userId;
     //set whats to change
     const user ={
@@ -65,6 +66,7 @@ update: function(req, res) {
         profileimage: profileimage,
         userId: userId   
     }
+    console.log(user, req.params.id, "update function")
     db.User
         .findOneAndUpdate({ userId: req.params.id }, user)
         .then(dbModel => res.json(dbModel))
