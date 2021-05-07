@@ -4,19 +4,30 @@
     box-sizing: border-box;
 }
 
+.submissionContainer{
+    display: flex; 
+    flex-direction:column; 
+    align-items:center;
+    justify-content:center;
+    height:60vh;
+}
+
 .formContainer{
     position: relative;
-    top: 20%;
     background-color: #d4d6c6;
     display: flex;
     flex-direction: row;
-    padding: 10px;
     align-items: center;
     justify-content: space-around;
+    padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
     border-top: 20px solid #a6b3a7;
     z-index: 5;
+}
+
+form{
+    padding: 15px;
 }
 
 .form__title {
@@ -101,7 +112,7 @@ to be able to see the preview of the image. */
     .formContainer{
         width: 100vw;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         background-color: transparent;
     }
     .form{
