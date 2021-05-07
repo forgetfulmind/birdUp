@@ -112,7 +112,7 @@ to be able to see the preview of the image. */
     .formContainer{
         width: 100vw;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         background-color: transparent;
     }
     .form{
