@@ -73,7 +73,7 @@ const handleImg = (e) => {
  //SEND IMAGE ONCE URL HOOK IS SET
   useEffect((event) => {
     if (imgUrl !== "0") {
-      console.log(imgUrl)       
+      // console.log(imgUrl)       
       
     let data = {
       'image':imgUrl, 
@@ -83,7 +83,7 @@ const handleImg = (e) => {
       'comment': comment
     }
         // console.log(userId)
-        console.log(data)
+        // console.log(data)
         API.uploadPost(data)
           .then(res => console.log(res, "response"))
           let alert = document.getElementById("alert")

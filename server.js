@@ -14,10 +14,23 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+
+
 //S3 Stuff 
 const aws = require('aws-sdk');
-// aws.config.region = 'us-east-2';
-aws.config.loadFromPath('./config/config.json');
+aws.config.region = 'us-east-2';
+// aws.config.credentials({
+//   accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, sessionToken: 'session'
+// });
+
+// aws.Config({
+//   accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, region: "us-east-2"
+// });
+// aws.config.loadFromPath('./config/config.json');
+
 const S3_BUCKET = 'birdup';
 
 app.get('/sign-s3', (req, res) => {
