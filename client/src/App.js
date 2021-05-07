@@ -19,13 +19,13 @@ function App({ isSignedIn}) {
 
 // console.log(isSignedIn, "isSignedIn")
 
-  // if(isSignedIn){
+  if(isSignedIn){
   return (
     <Router>
       <div>
         <Switch>
           <Route exact path={"/"}> 
-            <Login/>
+            <Members/>
           </Route>
           <Route exact path={"/members"}>
             <Members />
@@ -52,33 +52,15 @@ function App({ isSignedIn}) {
       </div>
     </Router>
   );
-  // }else{
-  //   return (
-  //     <Router>
-  //      <Route exact path={"/"}> 
-  //           <LogIn/>
-  //         </Route>
-  //         <Route exact path={"/members"}>
-  //         <LogIn />
-  //         </Route>
-  //         <Route exact path={"/edit"}>
-  //         <LogIn />
-  //         </Route>
-  //         <Route exact path={"/submitBird"}>
-  //         <LogIn />
-  //         </Route>
-  //         <Route exact path={"/earth"}>
-  //         <LogIn />
-  //         </Route>
-  //         <Route exact path={"/post/:id"}>
-  //         <LogIn />
-  //         </Route>
-  //         <Route exact path={"/logout"}>
-  //           <LogIn />
-  //           </Route>
-  //     </Router>
-  //   )
-  // }
+  }else{
+    return (
+      <Router>
+        <Route> 
+          <LogIn />
+        </Route>
+      </Router>
+    )
+  }
 }
 
 
