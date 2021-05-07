@@ -151,7 +151,7 @@ const handleImg = (e) => {
 
 
     return (
-      <div style={{display: "flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"60vh"}}>
+      <div class="submissionContainer">
       <div className="formContainer">
         <form id={"submitForm"} encType="multipart/form-data">
         <h4>Save observations</h4>

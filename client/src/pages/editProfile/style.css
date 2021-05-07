@@ -4,14 +4,22 @@
     box-sizing: border-box;
 }
 
+.submissionContainer{
+    display: flex; 
+    flex-direction:column; 
+    align-items:center;
+    justify-content:center;
+    height:60vh;
+}
+
 .formContainer{
     position: relative;
     background-color: #d4d6c6;
     display: flex;
     flex-direction: row;
-    padding: 15px;
     align-items: center;
     justify-content: space-around;
+    padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
     border-top: 20px solid #a6b3a7;
@@ -93,4 +101,21 @@ to be able to see the preview of the image. */
     object-fit: contain;
     border-radius: 50%;
     border: 10px #7d8e7e solid;
+}
+
+@media only screen and (max-width: 870px){
+    .submissionContainer{
+        width: 100vw;
+        height: auto;
+        flex-direction: column;
+    }
+    .formContainer{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+    }
+    .form{
+        width: 100vw;
+    }
 }
