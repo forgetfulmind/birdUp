@@ -21,9 +21,11 @@ function UserPage({userId}) {
           // console.log(user)
       })
     }
-    useEffect(()=>{
-      console.log(userProfile)
-    },[userProfile])
+
+    // useEffect(()=>{
+    //   console.log(userProfile)
+    // },[userProfile])
+
     useEffect(()=>{
       // loadUser() 
       // loadPosts()
@@ -39,7 +41,7 @@ function UserPage({userId}) {
         <div className="filter">
          <div className="boxHeading">
             <div className="userProps">
-              { userProfile.length !== 0 ? <img src={`/Images/2021${userProfile.data?.[0]?.profileimage.split(2021)[1]}`} className="observationImage"/> : null}
+              { userProfile.length !== 0 ? <img src={`${userProfile.data?.[0]?.profileimage}`} className="observationImage"/> : null}
             </div>
             <span className="heading">
               {userProfile && userProfile !== [] ? <h1>{userProfile.data?.[0]?.username}</h1> : null}

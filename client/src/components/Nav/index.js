@@ -5,13 +5,13 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg">
 
-       <Link to="/members" className="link">Home</Link>
+       <Link to="/members" className="link">Collection</Link>
 
-       <Link to="/edit" className="link">Update Profile</Link>
-
-        <Link to="/earth" className="link">Map</Link>
+       <Link to="/earth" className="link">Map</Link>
 
         <Link to="/submitBird" className="link">Post</Link>
+
+        <Link to="/edit" className="link">Avatar</Link>
 
         <Link to="/logout" className="link">Logout</Link>
     </nav>

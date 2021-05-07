@@ -27,6 +27,7 @@ export default {
     return axios.post("/api/users/default", userData, {headers:{ContentType:`multipart-form-data`}})
   },
   updateUser: function(id, userData){
+    console.log(id, "submitted id")
     return axios.put("/api/users/" +id, userData, {headers:{ContentType:`multipart-form-data`}})
   },
   findUser: function(id){

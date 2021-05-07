@@ -10,9 +10,9 @@ import './style.css'
 
 //create state 
 function SubmitBird({userId}) {
-
 const [birdObject, setBirdObject] = useState({})
 const [birdObject64, setBirdObject64] = useState({})
+const[imgUrl, setImgUrl] = useState("0")
 const [comment, setComment] = useState({})
 const [{alt, src}, setImg] = useState({
   src: placeholder,
@@ -43,11 +43,6 @@ const handleImg = (e) => {
     navigator.geolocation.getCurrentPosition(success);
   },[])
 
-  
-
-  useEffect((event) => {
-    // console.log(birdObject, 17)
-  },[birdObject])
 
   useEffect((event) => {
     let base64 = birdObject64.toString()
@@ -58,22 +53,9 @@ const handleImg = (e) => {
 
 //IF BIRD DO THIS
       if(response.length > 0) {
-        const data = new FormData() 
-        data.append('postsImage', birdObject[0])
-        data.append('name', userId)
-        data.append('lat', currentPosition.lat)
-        data.append('lng', currentPosition.lng)
-        data.append('comment', comment)
-        // console.log(userId)
-        // console.log(data)
-        API.uploadPost(data)
-          .then(res => console.log(res, "response"))
-          let alert = document.getElementById("alert")
-          alert.textContent = "Upload was a Success!"
-          setInterval(() => {
-            alert.textContent = ""
-          }, 5000);
-          document.getElementById("submitForm").reset();
+
+       getSignedRequest(birdObject[0])
+    
 
 //IF NO BIRD DO THIS           
         }else{ 
@@ -86,6 +68,33 @@ const handleImg = (e) => {
         }
     }) 
   },[birdObject64])
+    
+
+ //SEND IMAGE ONCE URL HOOK IS SET
+  useEffect((event) => {
+    if (imgUrl !== "0") {
+      console.log(imgUrl)       
+      
+    let data = {
+      'image':imgUrl, 
+      'name':userId,
+      'lat': currentPosition.lat,
+      'lng':currentPosition.lng,
+      'comment': comment
+    }
+        // console.log(userId)
+        console.log(data)
+        API.uploadPost(data)
+          .then(res => console.log(res, "response"))
+          let alert = document.getElementById("alert")
+          alert.textContent = "Upload was a Success!"
+          setInterval(() => {
+            alert.textContent = ""
+          }, 5000);
+          document.getElementById("submitForm").reset();
+    } 
+  },[imgUrl])
+
 
 //handle hook for image input
   function handleInputChange(event) {
@@ -150,8 +159,51 @@ const handleImg = (e) => {
 
 
 
+//===S3 STUFF===
+
+//UPLOAD FILE 
+function uploadFile(file, signedRequest, url){
+  const xhr = new XMLHttpRequest();
+  xhr.open('PUT', signedRequest);
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        setImgUrl(url)
+      }
+      else{
+       return null 
+      }
+    }
+  };
+  xhr.send(file);
+}
+
+//GET SIGNED REQUEST
+function getSignedRequest(file){
+  var timestamp = Date.now()
+  console.log(timestamp)
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', `/sign-s3?file-name=${timestamp}${file.name}&file-type=${file.type}`);
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        const response = JSON.parse(xhr.responseText);
+        uploadFile(file, response.signedRequest, response.url);
+      }
+      else{
+        console.log("signedinURLfail");
+      }
+    }
+  };
+  xhr.send();
+}
+
+//===END S3 STUFF===
+
+
+
     return (
-      <div class="submissionContainer">
+      <div className="submissionContainer">
       <div className="formContainer">
         <form id={"submitForm"} encType="multipart/form-data">
         <h4>Save observations</h4>
