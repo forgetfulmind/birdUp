@@ -55,9 +55,27 @@ function App({ isSignedIn}) {
   }else{
     return (
       <Router>
-        <Route> 
+       <Route exact path={"/"}> 
+            <LogIn/>
+          </Route>
+          <Route exact path={"/members"}>
           <LogIn />
-        </Route>
+          </Route>
+          <Route exact path={"/edit"}>
+          <LogIn />
+          </Route>
+          <Route exact path={"/submitBird"}>
+          <LogIn />
+          </Route>
+          <Route exact path={"/earth"}>
+          <LogIn />
+          </Route>
+          <Route exact path={"/post/:id"}>
+          <LogIn />
+          </Route>
+          <Route exact path={"/logout"}>
+            <LogIn />
+            </Route>
       </Router>
     )
   }
