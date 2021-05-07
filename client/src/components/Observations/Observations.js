@@ -37,7 +37,7 @@ function Observations({userId}) {
           <div className="observation" key={observations._id}>
             
             <div>
-              <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImage"/>
+              <img src={`${observations.image}`} className="observationImage"/>
             </div>
             
             <div className="observationBody">

@@ -4,9 +4,9 @@ const posts = require('../models/posts')
 
 module.exports = {
     create: function(req, res) {
-        console.log(req)
+        // console.log(req)
         let name = req.body.name;
-        let image = req.file.path
+        let image = req.body.image
         let lat = req.body.lat;
         let lng = req.body.lng;
         let comment = req.body.comment;

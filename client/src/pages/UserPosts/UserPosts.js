@@ -72,7 +72,7 @@ function Posts({userId}) {
 
                 <Col size='md-8'>
                 <div className='imageDiv'>
-                <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImg"/>
+                <img src={`${observations.image}`} className="observationImg"/>
                 </div>
 
                 </Col>

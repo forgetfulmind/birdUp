@@ -10,7 +10,7 @@ const validation = require('../../client/src/utils/middleWare/validation.js')
 const { create } = require('../../controllers/postsController.js');
 
 
-router.post('/',uploadMulter, validation, create);
+router.post('/', create);
 router.get('/', postsController.findAll)
 router.get('/:id', postsController.findById)
 router.delete('/:id', postsController.remove)

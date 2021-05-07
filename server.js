@@ -14,6 +14,40 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//S3 Stuff 
+const aws = require('aws-sdk');
+// aws.config.region = 'us-east-2';
+aws.config.loadFromPath('./config/config.json');
+const S3_BUCKET = 'birdup';
+
+app.get('/sign-s3', (req, res) => {
+  const s3 = new aws.S3();
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err, "getsignedURLerror");
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+    console.log(returnData)
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
