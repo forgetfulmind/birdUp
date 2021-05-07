@@ -14,6 +14,11 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
 //S3 Stuff 
 const aws = require('aws-sdk');
 aws.config.region = 'us-east-2';
@@ -21,8 +26,6 @@ aws.config.credentials({
   accessKeyId: `${process.env.AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.AWS_SECRET_ACCESS_KEY}`, sessionToken: 'session'
 });
 // aws.config.loadFromPath('./config/config.json');
-
-
 
 const S3_BUCKET = 'birdup';
 
