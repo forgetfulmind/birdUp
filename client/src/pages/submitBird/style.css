@@ -91,3 +91,20 @@ to be able to see the preview of the image. */
     border-radius: 50%;
     border: 10px #7d8e7e solid;
 }
+
+@media only screen and (max-width: 870px){
+    .submissionContainer{
+        width: 100vw;
+        height: auto;
+        flex-direction: column;
+    }
+    .formContainer{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+    }
+    .form{
+        width: 100vw;
+    }
+}
