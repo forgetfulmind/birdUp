@@ -82,4 +82,9 @@ body{
     .ObservationContainer{
         width: 100vw;
     }
+
+    .observation{
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -108,12 +108,13 @@ button:hover{
     }
     .birdUp{
         z-index: 2;
+        font-size: 5em;
     }
     .emblem{
         position: relative;
         z-index: 1;
         top: 5vh;
-        width: 70%;
-        height: 70%;
+        width: 80%;
+        height: 80%;
     }
 }
