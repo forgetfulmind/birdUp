@@ -26,7 +26,7 @@ const aws = require('aws-sdk');
 //   accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, sessionToken: 'session'
 // });
 
-var config = new AWS.Config({
+var config = new aws.Config({
   accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, sessionToken: 'session'
 });
 // aws.config.loadFromPath('./config/config.json');
