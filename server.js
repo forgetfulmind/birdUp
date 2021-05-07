@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 const aws = require('aws-sdk');
 aws.config.region = 'us-east-2';
 aws.config.credentials({
-  accessKeyId: `${process.env.AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.AWS_SECRET_ACCESS_KEY}`, sessionToken: 'session'
+  accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, sessionToken: 'session'
 });
 // aws.config.loadFromPath('./config/config.json');
 
