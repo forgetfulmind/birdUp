@@ -161,7 +161,7 @@ function EditProfile({userId}) {
 
 
     return(
-        <div style={{display: "flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"60vh"}}>
+        <div className="submissionContainer">
             
             <div className="formContainer">
                 
