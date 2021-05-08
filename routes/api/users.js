@@ -14,9 +14,9 @@ const validation = require('../../client/src/utils/middleWare/validation.js')
 const { create, update, findById, createDefault } = require('../../controllers/userController.js');
 
 
-router.post('/',uploadMulter, validation, create);
+router.post('/', create);
 router.post('/default', createDefault);
-router.put('/:id', uploadMulter, validation, update)
+router.put('/:id', update)
 router.get('/:id', findById)
 // router.delete('/:id', postsController.remove)
 

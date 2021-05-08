@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 // import { getObservations } from "../../utils/userObservations"
-import style from "./style.css"
+import "./style.css"
 import API from "../../utils/API";
 import { connect } from "react-redux";
-import { FormBtn } from "../Form/index"
+// import { FormBtn } from "../Form/index"
 import { Link } from "react-router-dom"
 
+//ignore eslint warnings
+/*eslint-disable */
 
 function Observations({userId}) {
     
@@ -37,7 +39,7 @@ function Observations({userId}) {
           <div className="observation" key={observations._id}>
             
             <div>
-              <img src={`/Images/2021${observations.image.split('2021')[1]}`} className="observationImage"/>
+              <img src={`${observations.image}`} className="observationImage"/>
             </div>
             
             <div className="observationBody">

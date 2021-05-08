@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import Nav from "../Nav/index"
 import API from "../../utils/API";
 import { connect } from "react-redux";
-import style from "./style.css"
+import "./style.css"
 function UserPage({userId}) {
+
+//ignore eslint warnings
+/*eslint-disable */
+
     // create state using hooks, drop info into placeholder locations
     const [observationData, setObservationData] = useState([])
     function loadPosts(){
@@ -12,6 +16,7 @@ function UserPage({userId}) {
         setObservationData(observations.data)
       })
     }
+    
     const [userProfile, setUserProfile] = useState([])
     function loadUser() {
       // console.log(userId)
@@ -21,25 +26,29 @@ function UserPage({userId}) {
           // console.log(user)
       })
     }
-    useEffect(()=>{
-      console.log(userProfile)
-    },[userProfile])
-    useEffect(()=>{
-      // loadUser() 
-      // loadPosts()
-      // console.log(observationData)
-    },[])
-    loadUser() 
-    loadPosts()
-    // if(userProfile.data){
+
+    // useEffect(()=>{
     //   console.log(userProfile)
+    // },[userProfile])
+
+    useEffect(()=>{
+      loadUser() 
+      loadPosts()
+      // console.log(observationData)
+      console.log(userProfile)
+    },[])
+    // loadUser() 
+    // loadPosts()
+    // console.log(userProfile)
+    // if(userProfile.data){
+      
     return (
     <div className="wrapper"> 
       <div className="mainImage d-flex justify-content-center align-items-center flex-column">
         <div className="filter">
          <div className="boxHeading">
             <div className="userProps">
-              { userProfile.length !== 0 ? <img src={`/Images/2021${userProfile.data?.[0]?.profileimage.split(2021)[1]}`} className="observationImage"/> : null}
+              { userProfile.length !== 0 ? <img src={`${userProfile.data?.[0]?.profileimage}`} className="observationImage"/> : null}
             </div>
             <span className="heading">
               {userProfile && userProfile !== [] ? <h1>{userProfile.data?.[0]?.username}</h1> : null}

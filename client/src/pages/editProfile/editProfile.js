@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import placeholder from './placeholder.png';
 import { connect } from "react-redux";
-import { Input, FormBtn } from '../../components/Form';
+import { Input } from '../../components/Form';
 import API from "../../utils/API";
 import Nav from "../../components/Nav"
 import './style.css'
 
+//ignore eslint warnings
+/*eslint-disable */
+
 function EditProfile({userId}) {
     //set state
-    const [userProfile, setUserProfile] = useState([])
-    const [userName, setUserName] = useState([])
+    // const [userProfile, setUserProfile] = useState([])
+    const [userName, setUserName] = useState()
     const [{alt, src}, setImg] = useState({
         src: placeholder,
         alt: 'Upload an Image'
     })
-    const[userImage, setUserImage] = useState([])
-    const [userImage64, setUserImage64] = useState([])
+    // const[userImage, setUserImage] = useState([])
+    const[imgUrl, setImgUrl] = useState("0")
 
     
 
@@ -26,67 +29,33 @@ function EditProfile({userId}) {
                 alt: e.target.files[0].name
             });  
         }   
-        setUserImage([ e.target.files[0] ])  
+        getSignedRequest(e.target.files[0])
+        // setUserImage([ e.target.files[0] ])  
     }  
 
-
-    function loadUser() {
-        API.findUser(userId)
-        .then(user => {
-            setUserProfile(user)
-        })
-    }
-
-    // useEffect(() => {
-    //     loadUser()
-    //     console.log(userProfile, 22)
-    // },[]);
-
-    // useEffect((event) => {
-    //         console.log(userName)
-    //         console.log(userImage)
-    //         console.log(userId)
-    //         const data = new FormData() 
-    //         data.append('userId', userId.toString())
-    //         data.append('postsImage', userImage[0])
-    //         data.append('username', userName)
-            
-    //         console.log(data)
-    //         API.editUser(data).then(res => console.log(res, "52"))
-
-    //   },[userImage])
-      
-    // //set the updated Image, append to page 
-    // function handleImageChange(event) {
-    //     setImg([ event.target.files[0] ])
-    //     console.log({alt, src})
-    //  };
-
-     //set the new Name
      function handleNameChange(event) {
-        setUserName([ event.target.value ])
+        setUserName(event.target.value)
      }
 
 
     function handleFormSubmit(event){
         event.preventDefault();
 
-        console.log(userName)
-            console.log(userImage)
-            console.log(userId)
-            console.log(userName)
-            const data = new FormData() 
-            data.append('userId', userId)
-            data.append('postsImage', userImage[0])
-            data.append('username', userName)
+               
+        let data = {
+            'userId':userId,
+            'image': imgUrl,
+            'username': userName
+          }
             
             console.log(data)
+
             API.findUser(userId)
             .then(res => {
             return res;
                 })
                 .then((res) => {
-                    console.log(res)
+                    console.log(res, "found user")
                     if(res.data.length === 0) {
                         console.log('saved')
                         API.saveUser(data).then(res => console.log(res, "52"))
@@ -108,56 +77,56 @@ function EditProfile({userId}) {
                     }
                 })
                     
-
-
-
-
-    // if(userImage) {
-    //    //grab data from form;
-    //     // console.log (userProfile[0].size);
-    //     if(parseInt(userImage[0].size)> 1400000) {
-    //         let reader = new FileReader();
-    //         reader.readAsDataURL(userImage[0]);
-    //         reader.onload = function () {
-    //         setUserImage64([reader.result]);
-    //         };
-    //         reader.onloadend= function(){
-    //             // console.log(userProfile64)
-    //             console.log("before")
-    //             resize();
-    //         }
-    //     }else{
-    //         let reader = new FileReader();
-    //         reader.readAsDataURL(userImage[0]);
-    //         reader.onload = function () {
-            
-            
-    //         };
-    //         reader.onloadend= function(){
-    //             console.log("submit")
-    //             setUserImage64(reader.result);
-    //             // console.log(reader.result)
-    //             console.log(userImage64,88)
-    //         }
-    //     }
-
-    // }
     }
 
-    
-  //image compression function 
-//   function resize() {
-//     let image = new Image()
-//     image.src = userImage64
-//     image.onload= function(){
-//     let canvas = document.createElement("canvas")
-//     canvas.width = image.width/1.7
-//     canvas.height = image.height/1.7
-//     const context = canvas.getContext("2d")
-//     context.drawImage(image, 0, 0, canvas.width, canvas.height)
-//     setUserImage64(canvas.toDataURL("image/jpeg", 0.8))
-//     console.log("after")
-// }}
+
+
+
+
+
+//===S3 STUFF===
+
+//UPLOAD FILE 
+function uploadFile(file, signedRequest, url){
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          setImgUrl(url)
+        }
+        else{
+         return null 
+        }
+      }
+    };
+    xhr.send(file);
+  }
+  
+  //GET SIGNED REQUEST
+  function getSignedRequest(file){
+    var timestamp = Date.now()
+    // console.log(timestamp)
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/sign-s3?file-name=${timestamp}${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          const response = JSON.parse(xhr.responseText);
+          uploadFile(file, response.signedRequest, response.url);
+        }
+        else{
+          console.log("signedinURLfail");
+        }
+      }
+    };
+    xhr.send();
+  }
+  
+  //===END S3 STUFF===
+
+
+
 
 
     return(

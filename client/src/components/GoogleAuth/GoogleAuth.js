@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as AuthorizationAction from "../../framework/redux/module/Authorization";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import API from "../../utils/API"
+
+//ignore eslint warnings
+/*eslint-disable */
 
 const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   const [auth, setAuth] = useState(null);
@@ -42,7 +45,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
       // console.log(res, "res from signIN")
       const data = {
         'username': res.ft.Qt.split("@")[0].toString(),
-        'image': "./2021-default.png", 
+        'image': "https://birdup.s3.us-east-2.amazonaws.com/cock.jpg", 
         'userId': res.ft.tS.toString()
       }
       API.findUser(res.ft.tS)
