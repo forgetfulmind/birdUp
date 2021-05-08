@@ -29,7 +29,7 @@ aws.config.region = 'us-east-2';
 // aws.Config({
 //   accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, region: "us-east-2"
 // });
-aws.config.loadFromPath('./config/config.json');
+// aws.config.loadFromPath('./config/config.json');
 
 const S3_BUCKET = 'birdup';
 
