@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as AuthorizationAction from "../../framework/redux/module/Authorization";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import API from "../../utils/API"
+
+//ignore eslint warnings
+/*eslint-disable */
 
 const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
   const [auth, setAuth] = useState(null);

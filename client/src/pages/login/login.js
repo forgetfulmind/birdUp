@@ -2,12 +2,15 @@
 import React from "react";
 // import API from "../../utils/API";
 // import { Input, FormBtn } from "../../components/Form";
-import style from "./style.css"
+import  "./style.css"
 // import Login from "../../components/Login/login"
 import birdUp from "../../assets/birdUp.svg"
 import GoogleAuth from "../../components/GoogleAuth/GoogleAuth"
 //create state 
 function LogIn() {
+
+  //ignore eslint warnings
+/*eslint-disable */
 
   // const [formObject, setFormObject] = useState({})
 

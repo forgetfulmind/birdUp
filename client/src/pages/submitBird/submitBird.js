@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import placeholder from './imageplaceholder.png';
-import { Input, FormBtn } from "../../components/Form";
+import { Input } from "../../components/Form";
 import { connect } from "react-redux";
 import Nav from "../../components/Nav"
 import './style.css'
-// import exifr from 'exifr'
+
+//ignore eslint warnings
+/*eslint-disable */
 
 
 //create state 

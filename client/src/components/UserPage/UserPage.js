@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import Nav from "../Nav/index"
 import API from "../../utils/API";
 import { connect } from "react-redux";
-import style from "./style.css"
+import "./style.css"
 function UserPage({userId}) {
+
+//ignore eslint warnings
+/*eslint-disable */
+
     // create state using hooks, drop info into placeholder locations
     const [observationData, setObservationData] = useState([])
     function loadPosts(){

@@ -1,13 +1,15 @@
 //import React from "react"
 import { Col, Row, Container } from "../../components/Grid";
 import React,  { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import Nav from "../../components/Nav"
-import style from "./style.css"
+import "./style.css"
 import { connect } from "react-redux";
 import API from "../../utils/API"
 import {useParams} from "react-router-dom"
 
+//ignore eslint warnings
+/*eslint-disable */
 
 //create state 
 function Posts({userId}) {

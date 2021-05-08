@@ -4,6 +4,8 @@ require('dotenv').config()
 
 const clientID = ''
 
+//ignore eslint warnings
+/*eslint-disable */
 
 function Login(){
 
