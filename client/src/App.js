@@ -40,7 +40,7 @@ setSignIn(localStorage.getItem('signIn'))
 
 useEffect(()=>{
 
-  
+
 
 },[])
 
@@ -52,7 +52,7 @@ useEffect(()=>{
     <Router>
       <div>
         <Switch>
-          <Route exact path={"/"}> 
+          <Route path={"/"}> 
             <Members/>
           </Route>
           <Route exact path={"/members"}>
