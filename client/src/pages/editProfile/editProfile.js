@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import placeholder from './placeholder.png';
 import { connect } from "react-redux";
-import { Input, FormBtn } from '../../components/Form';
+import { Input } from '../../components/Form';
 import API from "../../utils/API";
 import Nav from "../../components/Nav"
 import './style.css'
+
+//ignore eslint warnings
+/*eslint-disable */
 
 function EditProfile({userId}) {
     //set state
@@ -14,8 +17,7 @@ function EditProfile({userId}) {
         src: placeholder,
         alt: 'Upload an Image'
     })
-    const[userImage, setUserImage] = useState([])
-    const [userImage64, setUserImage64] = useState([])
+    // const[userImage, setUserImage] = useState([])
     const[imgUrl, setImgUrl] = useState("0")
 
     
@@ -28,17 +30,9 @@ function EditProfile({userId}) {
             });  
         }   
         getSignedRequest(e.target.files[0])
-        setUserImage([ e.target.files[0] ])  
+        // setUserImage([ e.target.files[0] ])  
     }  
 
-    // function loadUser() {
-    //     API.findUser(userId)
-    //     .then(user => {
-    //         setUserProfile(user)
-    //     })
-    // }
-
-     //set the new Name
      function handleNameChange(event) {
         setUserName(event.target.value)
      }
@@ -85,30 +79,7 @@ function EditProfile({userId}) {
                     
     }
 
-    //  //SEND IMAGE ONCE URL HOOK IS SET
-    //  useEffect((event) => {
-    //     if (imgUrl !== "0") {
-    //       console.log(imgUrl)       
-          
-    //     let data = {
-    //       'image':imgUrl, 
-    //       'name':userId,
-    //       'lat': currentPosition.lat,
-    //       'lng':currentPosition.lng,
-    //       'comment': comment
-    //     }
-    //         // console.log(userId)
-    //         console.log(data)
-    //         API.uploadPost(data)
-    //           .then(res => console.log(res, "response"))
-    //           let alert = document.getElementById("alert")
-    //           alert.textContent = "Upload was a Success!"
-    //           setInterval(() => {
-    //             alert.textContent = ""
-    //           }, 5000);
-    //           document.getElementById("submitForm").reset();
-    //     } 
-    //   },[imgUrl])
+
 
 
 

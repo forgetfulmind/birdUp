@@ -1,11 +1,13 @@
 import React,  { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import Nav from "../../components/Nav"
-import style from "./style.css"
+import "./style.css"
 import { connect } from "react-redux";
 import API from "../../utils/API"
 import { Link } from "react-router-dom"
 
+//ignore eslint warnings
+/*eslint-disable */
 
 const MapContainer = ({userId}) => {
   //loading info

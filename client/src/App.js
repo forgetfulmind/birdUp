@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import SignUp from "./pages/signUp";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
 import Members from "./pages/members/members"
 import EditProfile from "./pages/editProfile/editProfile";
@@ -10,6 +10,8 @@ import  MapContainer  from "./pages/earth/earth"
 import { connect } from "react-redux";
 import UserPosts from "./pages/UserPosts/UserPosts"
 
+//ignore eslint warnings
+/*eslint-disable */
 
 const mapStateToProps = (state) => {
   return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
