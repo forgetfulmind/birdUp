@@ -52,9 +52,6 @@ useEffect(()=>{
     <Router>
       <div>
         <Switch>
-          <Route path={"/"}> 
-            <Members/>
-          </Route>
           <Route exact path={"/members"}>
             <Members />
           </Route>
@@ -72,6 +69,9 @@ useEffect(()=>{
           </Route>
           <Route exact path={"/logout"}>
             <LogIn />
+          </Route>
+          <Route path={"/"}> 
+            <Members/>
           </Route>
           <Route>
             <NoMatch />
