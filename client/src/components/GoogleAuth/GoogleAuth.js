@@ -41,7 +41,10 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
 
   const onSignInClick = () => {
     auth.signIn()
+    // .then((res)=>{localStorage.setItem('signIn', true)})
     .then((res)=>{
+      localStorage.setItem('signIn', true)
+      localStorage.setItem('userId', res.ft.tS.toString())
       // console.log(res, "res from signIN")
       const data = {
         'username': res.ft.Qt.split("@")[0].toString(),
@@ -61,7 +64,13 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
 
   const onSignOutClick = () => {
     auth.signOut()
-        .then(res => {window.location.assign("/")})
+    .then((res)=>{
+      localStorage.setItem('signIn', false)
+      localStorage.setItem('userId', "")
+
+
+    })
+    .then(res => {window.location.assign("/")})
   };
 
   const renderAuthButton = () => {
