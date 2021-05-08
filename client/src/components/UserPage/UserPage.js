@@ -12,6 +12,7 @@ function UserPage({userId}) {
         setObservationData(observations.data)
       })
     }
+    
     const [userProfile, setUserProfile] = useState([])
     function loadUser() {
       // console.log(userId)
@@ -27,14 +28,16 @@ function UserPage({userId}) {
     // },[userProfile])
 
     useEffect(()=>{
-      // loadUser() 
-      // loadPosts()
+      loadUser() 
+      loadPosts()
       // console.log(observationData)
+      console.log(userProfile)
     },[])
-    loadUser() 
-    loadPosts()
+    // loadUser() 
+    // loadPosts()
+    // console.log(userProfile)
     // if(userProfile.data){
-    //   console.log(userProfile)
+      
     return (
     <div className="wrapper"> 
       <div className="mainImage d-flex justify-content-center align-items-center flex-column">
