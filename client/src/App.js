@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
@@ -9,26 +9,49 @@ import SubmitBird from "./pages/submitBird/submitBird.js"
 import  MapContainer  from "./pages/earth/earth"
 import { connect } from "react-redux";
 import UserPosts from "./pages/UserPosts/UserPosts"
+import {createBrowserHistory} from "history"
 
 //ignore eslint warnings
 /*eslint-disable */
+
+const history = createBrowserHistory()
 
 const mapStateToProps = (state) => {
   return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
 };
 
+
 function App({ isSignedIn}) {
 
-// console.log(isSignedIn, "isSignedIn")
+const [signIn, setSignIn] = useState(localStorage.getItem('signIn'))
 
-  if(isSignedIn){
+// useEffect(()=>{
+
+// setSignIn(localStorage.getItem('signIn'))
+// console.log(Boolean(signIn))
+// },[signIn])
+
+useEffect(()=>{
+
+setSignIn(localStorage.getItem('signIn'))
+
+},[isSignedIn])
+
+
+useEffect(()=>{
+
+
+
+},[])
+
+// console.log(isSignedIn, "isSignedIn")
+// if(signIn === "true"){
+
+  if(signIn === "true"){
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path={"/"}> 
-            <Members/>
-          </Route>
           <Route exact path={"/members"}>
             <Members />
           </Route>
@@ -46,6 +69,9 @@ function App({ isSignedIn}) {
           </Route>
           <Route exact path={"/logout"}>
             <LogIn />
+          </Route>
+          <Route path={"/"}> 
+            <Members/>
           </Route>
           <Route>
             <NoMatch />

@@ -29,7 +29,7 @@ aws.config.region = 'us-east-2';
 // aws.Config({
 //   accessKeyId: `${process.env.REACT_APP_AWS_ACCESS_KEY_ID}`, secretAccessKey: `${process.env.REACT_APP_AWS_SECRET_ACCESS_KEY}`, region: "us-east-2"
 // });
-aws.config.loadFromPath('./config/config.json');
+// aws.config.loadFromPath('./config/config.json');
 
 const S3_BUCKET = 'birdup';
 
@@ -74,10 +74,16 @@ app.use(express.static('public')) //serving public src for images
 // Serve up static assets (usually on heroku)
         if (process.env.NODE_ENV === "production") {
           app.use(express.static("client/build"));
+          // app.get("/", (req, res) => { res.sendFile(path.resolve(__dirname, "client", "build", "/client/build/index.html")) })
         }
+        
 // Add routes, both API and view
 const routes = require("./routes");
 app.use(routes);
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/birdup");

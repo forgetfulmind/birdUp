@@ -2,8 +2,8 @@ const SIGN_IN = "SIGN_IN";
 const SIGN_OUT = "SIGN_OUT";
 
 const INITIAL_STATE = {
-  isSignedIn: null,
-  userId: null,
+  isSignedIn: localStorage.getItem('signIn'),
+  userId: localStorage.getItem('userId'),
 };
 
 export default (state = INITIAL_STATE, action) => {
