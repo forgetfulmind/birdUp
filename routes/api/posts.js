@@ -14,5 +14,5 @@ router.post('/', create);
 router.get('/', postsController.findAll)
 router.get('/:id', postsController.findById)
 router.delete('/:id', postsController.remove)
-
+router.put('/:id', postsController.updateMany)
 module.exports = router;
