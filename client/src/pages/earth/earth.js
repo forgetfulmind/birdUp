@@ -31,7 +31,7 @@ const MapContainer = ({userId}) => {
   // Begin map information  
   const mapStyles = {        
     height: "70vh",
-    width: "70%"};
+    width: "85%"};
 
   
   const defaultCenter = {

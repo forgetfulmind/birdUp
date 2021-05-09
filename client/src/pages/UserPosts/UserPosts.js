@@ -107,7 +107,6 @@ function Posts({userId}) {
               <div className='commentData'>
 
                 <h4>
-                  <Link to={"/member/" + observations.userId}>{observations.username}'s </Link>
                   Comments:
                 </h4>
                   {observations.comment ? <p>{observations.comment}</p>  : <p></p>}
