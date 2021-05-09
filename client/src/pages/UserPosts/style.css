@@ -73,16 +73,21 @@ a:hover{
         overflow-y: auto;
     }
     .imageDiv{
+        display: flex;
+        align-items: center;
         width: 100vw;
-        height: 45vh;
+        height: auto;
         border: none;
+    }
+    .imageDiv img{
+        width: 100%;
+        height: 100vh;
     }
     .data{
         width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 50vh;
         border-top: 20px solid #10171a;
     }
 }
