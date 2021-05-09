@@ -18,7 +18,7 @@ function EditProfile({userId}) {
         alt: 'Upload an Image'
     })
     // const[userImage, setUserImage] = useState([])
-    const[imgUrl, setImgUrl] = useState("0")
+    const[imgUrl, setImgUrl] = useState()
 
     const handleImg = (e) => {
         if(e.target.files[0]) {
