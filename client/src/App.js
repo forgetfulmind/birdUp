@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import SignUp from "./pages/signUp";
 import NoMatch from "./pages/NoMatch";
 import Members from "./pages/members/members"
+import Member from "./pages/member/member"
 import EditProfile from "./pages/editProfile/editProfile";
 import LogIn from "./pages/login/login"
 import SubmitBird from "./pages/submitBird/submitBird.js"
@@ -66,6 +67,9 @@ useEffect(()=>{
           </Route>
           <Route exact path={"/post/:id"}>
             <UserPosts />
+          </Route>
+          <Route exact path={"/member/:id"}>
+            <Member />
           </Route>
           <Route exact path={"/logout"}>
             <LogIn />

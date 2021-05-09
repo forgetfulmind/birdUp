@@ -64,7 +64,7 @@ export default {
 
   //get observations by user ID
   getUserObservations: function(id){
-    return axios.get("api/posts/" + id)
+    return axios.get("/api/posts/" + id)
   },
 
   //delete posts
