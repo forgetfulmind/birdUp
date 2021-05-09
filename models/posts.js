@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 const fs = require('fs')
 
 const PostsSchema = new mongoose.Schema({
-    name: {
+    username: {
+        type:String,
+        trim: true,
+        
+    },
+    userId: {
         type:String,
         trim: true,
         

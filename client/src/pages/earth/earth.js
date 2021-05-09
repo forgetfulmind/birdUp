@@ -107,6 +107,7 @@ const MapContainer = ({userId}) => {
             observationData.map(item => {
               let pin = 
                 {
+                  username: item.username,
                   createdAt: item.createdAt,
                   image: item.image,
                   id: item._id,
@@ -134,15 +135,18 @@ const MapContainer = ({userId}) => {
               onCloseClick={() => setSelected({})}
             >
               <div>
-              <p>{selected.comment}</p>
-              <a href="">{selected.name}</a>
-              <Link to={"/post/" + selected.id}>
-            <p> View Post </p>
-          
-          </Link>
               <div>
-              <img src={`${selected.image}`} className="observationImage"/>
-          </div>
+                <img src={`${selected.image}`} className="observationImage"/>
+              </div>
+              
+              <Link to={"/post/" + selected.id}>
+                <button>View Post</button>
+          
+              </Link>
+
+              <p>{selected.username}</p>
+              <p>{selected.comment}</p>
+              
               </div>
             </InfoWindow>
             )

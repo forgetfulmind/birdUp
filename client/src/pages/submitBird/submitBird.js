@@ -13,13 +13,15 @@ import './style.css'
 //create state 
 function SubmitBird({userId}) {
 const [birdObject, setBirdObject] = useState({})
-const [birdObject64, setBirdObject64] = useState({})
+const [birdObject64, setBirdObject64] = useState(0)
 const[imgUrl, setImgUrl] = useState("0")
 const [comment, setComment] = useState({})
 const [{alt, src}, setImg] = useState({
   src: placeholder,
   alt: 'Upload an Image'
 })
+const [ currentPosition, setCurrentPosition ] = useState({});
+const [gUserName, setGUserName] = useState({})
 
 const handleImg = (e) => {
   if(e.target.files[0]) {
@@ -31,22 +33,35 @@ const handleImg = (e) => {
   setBirdObject([ e.target.files[0] ])  
 }
 
-  const [ currentPosition, setCurrentPosition ] = useState({});
+function loadUser() {
+  // console.log(userId)
+  API.findUser(userId)
+  .then(user => {
+      setGUserName(user.data[0].username)
+      // console.log(user)
+  })
+}
   
-  const success = position => {
-    const userPosition = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    }
-    setCurrentPosition(userPosition);
-  };
+const success = position => {
+  const userPosition = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  }
+  setCurrentPosition(userPosition);
+};
   
-  useEffect(() => {
+useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
   },[])
 
+useEffect(() => {
+  loadUser()
+  console.log(gUserName)
+})
 
   useEffect((event) => {
+    
+    if(birdObject64 !== 0){
     let base64 = birdObject64.toString()
     API.submitBird(base64.split(",")[1]).then(res => {
       // console.log(res)
@@ -69,6 +84,7 @@ const handleImg = (e) => {
           document.getElementById("submitForm").reset();
         }
     }) 
+  }
   },[birdObject64])
     
 
@@ -78,14 +94,15 @@ const handleImg = (e) => {
       // console.log(imgUrl)       
       
     let data = {
-      'image':imgUrl, 
-      'name':userId,
+      'image': imgUrl, 
+      'username': gUserName,
+      'userId': userId,
       'lat': currentPosition.lat,
-      'lng':currentPosition.lng,
-      'comment': comment
+      'lng': currentPosition.lng,
+      'comment': comment,
     }
         // console.log(userId)
-        // console.log(data)
+        console.log(data)
         API.uploadPost(data)
           .then(res => console.log(res, "response"))
           let alert = document.getElementById("alert")

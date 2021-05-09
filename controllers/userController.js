@@ -57,15 +57,31 @@ findById: function(req, res) { //finds by USER ID, not post ID
       .catch(err => res.status(422).json(err));
 },
 update: function(req, res) {
+
     let username = req.body.username;
     let profileimage = req.body.image;
     let userId = req.body.userId;
     //set whats to change
-    const user ={
-        username: username,
-        profileimage: profileimage,
-        userId: userId   
+    let user;
+    if(!username && profileimage){
+        user ={
+            profileimage: profileimage,
+            userId: userId   
     }
+    }else if(username && !profileimage) {
+        user ={
+            username: username,
+            userId: userId   
+        }
+    }else {
+        user ={
+            username: username,
+            profileimage: profileimage,
+            userId: userId   
+        }
+    }
+
+
     console.log(user, req.params.id, "update function")
     db.User
         .findOneAndUpdate({ userId: req.params.id }, user)
