@@ -78,7 +78,6 @@ function Posts({userId}) {
             </div>
             
             <hr />
-            <div className="huh">
               <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={13}
@@ -104,14 +103,20 @@ function Posts({userId}) {
                   })
                 }
               </GoogleMap>
-            </div>
+
               <div className='commentData'>
+
                 <h4>
-                  <Link to={"/member/" + observations.name}>{observations.username}'s </Link>
-                  Comments:</h4>
+                  <Link to={"/member/" + observations.userId}>{observations.username}'s </Link>
+                  Comments:
+                </h4>
                   {observations.comment ? <p>{observations.comment}</p>  : <p></p>}
 
               </div>
+
+              <h4>
+                Posted by <Link to={"/member/" + observations.userId}>{observations.username}</Link>
+              </h4>
 
             </div>
           </div> 
