@@ -52,5 +52,20 @@ module.exports = {
           .then(dbModel => dbModel.remove())
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
-      }
+    },
+    updateMany: function(req, res) {
+        let username= req.body.username
+        console.log(req.body, 58)
+        console.log(req.params.id, 59)
+
+        // let updateUserName = {
+        //     username: username
+        // }
+
+        db.Posts
+            .updateMany({userId:req.params.id}, {username: username})
+            // .then(dbModel => dbModel.update())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    }   
 }

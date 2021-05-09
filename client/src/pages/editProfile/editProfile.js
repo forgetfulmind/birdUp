@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import placeholder from './placeholder.png';
 import { connect } from "react-redux";
 import { Input } from '../../components/Form';
@@ -19,8 +19,6 @@ function EditProfile({userId}) {
     })
     // const[userImage, setUserImage] = useState([])
     const[imgUrl, setImgUrl] = useState("0")
-
-    
 
     const handleImg = (e) => {
         if(e.target.files[0]) {
@@ -67,7 +65,9 @@ function EditProfile({userId}) {
                         }, 5000);
                     }else {
                         console.log('updated')
-                        API.updateUser(userId, data).then(res => console.log(res,88))
+                        API.updateUser(userId, data).then(res => console.log(res,70))
+                        console.log(userName)
+                        API.updateUserName(userId, {'username': userName}).then(res => console.log(res,71))
                         document.getElementById("submitForm").reset();
                         let alert = document.getElementById("alert")
                         alert.textContent = "Updated profile successfully"

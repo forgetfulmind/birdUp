@@ -74,6 +74,10 @@ export default {
 
   getPost: function(id){
     return axios.get("/api/post/" + id)
+  },
+
+  updateUserName: function(id, userData) {
+    return axios.put("/api/posts/" + id, userData)
   }
 
 };
