@@ -1,60 +1,83 @@
+.single{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 95vh;
+}
 
 .imageDiv{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2%;
-    border-top: 20px solid #a6b3a7;
-    border-bottom: 20px solid #a6b3a7;
-    
+    width: 45vw;
+    height: 95vh;
+    border-right: 20px solid #10171a;
 }
-.mainContainer{
-    padding-top:10% ;
-}
-.oLocation{
 
-}
-.oDate{
-
-}
-.observeData{
-    background-color: #D4D6C6;
-    border-radius: 10px;
-    margin:10px;
-    text-align:center;
-    border-radius: 5px;
-    border-top: 20px solid #a6b3a7;
-    width:100%;
-}
-.commentData{
-    background-color: #D4D6C6;
-    border-radius: 10px;
-    text-align: center;
-    border-radius: 5px;
-    border-top: 20px solid #a6b3a7;
-    width:100%;
-    margin:10px;
-}
-.map{
-    display:flex;
-    justify-content: center;
-    background-color: #D4D6C6;
-    border-top: 20px solid #a6b3a7;
-    padding:50px;
-    border-radius: 10px;
-    align-items: center;
-    object-fit:cover;
-}
 .observationImg{
-    
-    object-fit:cover;
-    max-width:100%;
-    height:auto;
-
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.infoRow{
-    margin-bottom: 10px;
-    
+.data{
+    padding: 25px;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    object-fit:cover;
+}
 
+.observationInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    padding: 25px;
+}
+
+.commentData{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.commentData a{
+    text-decoration: underline;
+    color: #7d8e7e;
+}
+
+.commentData a:hover{
+    text-decoration: none;
+    color: #10171a;
+}
+
+hr{
+    border: 0;
+    margin-top: -10px;
+    height: 2px;
+    background: #a6b3a7;
+    width: 95%;
+}
+
+
+@media only screen and (max-width: 790px){
+    .single{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: auto;
+    }
+    .imageDiv{
+        width: 100vw;
+        height: 45vh;
+        border: none;
+    }
+    .data{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        border-top: 20px solid #10171a;
+    }
 }
