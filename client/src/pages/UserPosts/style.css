@@ -3,18 +3,18 @@
     flex-direction: row;
     align-items: center;
     height: 95vh;
+    padding: 20px;
 }
 
 .imageDiv{
-    width: 45vw;
-    height: 95vh;
-    border-right: 20px solid #10171a;
+    width: 50vw;
 }
 
-.observationImg{
+.imageDiv img{
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .data{
@@ -69,20 +69,22 @@ a:hover{
     .single{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         overflow-y: auto;
+        padding: 0;
     }
+
     .imageDiv{
-        display: flex;
-        align-items: center;
         width: 100vw;
-        height: auto;
-        border: none;
     }
+    
     .imageDiv img{
+        padding: 15px;
         width: 100%;
-        height: 100vh;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
     }
+
     .data{
         width: 100vw;
         display: flex;
