@@ -74,17 +74,3 @@ body{
 .link:hover{
     color: #7d8e7e
 }
-
-@media only screen and (max-width: 870px){
-    .ObservationBlock{
-        width: 100vw;
-    }
-    .ObservationContainer{
-        width: 100vw;
-    }
-
-    .observation{
-        display: flex;
-        flex-direction: column;
-    }
-}
