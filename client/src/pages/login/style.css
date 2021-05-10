@@ -92,10 +92,13 @@ button:hover{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        max-width: 100%;
+        overflow-y: scroll;
+        /* overflow-x: hidden; */
     }
     .sideBar{
         width: 100vw;
-        height: 45vh;
+        height: 35vh;
         border: none;
     }
     .login{
@@ -103,7 +106,7 @@ button:hover{
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 50vh;
+        /* height: 55vh; */
         border-top: 20px solid #10171a;
     }
     .birdUp{
@@ -113,8 +116,13 @@ button:hover{
     .emblem{
         position: relative;
         z-index: 1;
-        top: 5vh;
-        width: 80%;
-        height: 80%;
+        top: 15%;
+        padding: 10px;
+        width: 70%;
+        height: 70%;
+    }
+    button{
+        margin-top: 0px;
+        margin-bottom: 15px;
     }
 }

@@ -64,3 +64,17 @@ h4{
 .buttons a{
     padding: 0
 }
+
+@media only screen and (max-width: 870px){
+    .ObservationBlock{
+        width: 100vw;
+    }
+    .ObservationContainer{
+        width: 100vw;
+    }
+    .observation{
+        display: flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+}

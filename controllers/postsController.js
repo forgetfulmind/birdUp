@@ -5,14 +5,16 @@ const posts = require('../models/posts')
 module.exports = {
     create: function(req, res) {
         // console.log(req)
-        let name = req.body.name;
+        let username = req.body.username;
+        let userId = req.body.userId
         let image = req.body.image
         let lat = req.body.lat;
         let lng = req.body.lng;
         let comment = req.body.comment;
 
     const posts ={
-        name: name,
+        username: username,
+        userId: userId,
         image: image,
         lat: lat,
         lng:lng,
@@ -33,7 +35,7 @@ module.exports = {
       },
       findById: function(req, res) { //finds by USER ID, not post ID
         db.Posts
-          .find({name: req.params.id})
+          .find({userId: req.params.id})
           .sort({ createdAt: -1 })
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
@@ -50,5 +52,20 @@ module.exports = {
           .then(dbModel => dbModel.remove())
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
-      }
+    },
+    updateMany: function(req, res) {
+        let username= req.body.username
+        console.log(req.body, 58)
+        console.log(req.params.id, 59)
+
+        // let updateUserName = {
+        //     username: username
+        // }
+
+        db.Posts
+            .updateMany({userId:req.params.id}, {username: username})
+            // .then(dbModel => dbModel.update())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    }   
 }
