@@ -11,7 +11,7 @@ import UserPage from "../../components/UserPage/UserPage"
 function Members() {
     return (
     <div>
-      <div style={{display: "flex", flexDirection:"column", alignItems:"center"}}>
+      <div className="members">
         <UserPage />
         <Observations />
       </div>
