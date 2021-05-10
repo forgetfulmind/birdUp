@@ -98,7 +98,7 @@ button:hover{
     }
     .sideBar{
         width: 100vw;
-        height: 45vh;
+        height: 35vh;
         border: none;
     }
     .login{
@@ -106,7 +106,7 @@ button:hover{
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 55vh;
+        /* height: 55vh; */
         border-top: 20px solid #10171a;
     }
     .birdUp{
