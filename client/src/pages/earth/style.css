@@ -22,7 +22,7 @@
 
 .gm-style-iw-d{
     border: 1px solid black;
-    background: burlywood;
+    background: #e7e8dd;
     overflow: hidden !important;
     margin: 10px;
 }
@@ -35,7 +35,7 @@
 
 .gm-style-iw-t::after{
     border: 1px solid black;
-    background: burlywood !important;
+    background: #e7e8dd !important;
 }
 
 .buttonOptions{
@@ -47,6 +47,17 @@
     display: flex;
     flex-direction: column;
     align-items: center; 
+    padding: 10px;
 }
 
+.boldText{
+    font-weight: 600;
+}
 
+.observationInfoImage{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

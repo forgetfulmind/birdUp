@@ -33,47 +33,6 @@ const MapContainer = ({userId}) => {
     height: "70vh",
     width: "85%"};
 
-  
-  const defaultCenter = {
-    lat: 41.3851, lng: 2.1734
-  }
-  const locations = [
-    {
-      name: "Location 1",
-      location: { 
-        lat: 41.3954,
-        lng: 2.162 
-      },
-    },
-    {
-      name: "Location 2",
-      location: { 
-        lat: 41.3917,
-        lng: 2.1649
-      },
-    },
-    {
-      name: "Location 3",
-      location: { 
-        lat: 41.3773,
-        lng: 2.1585
-      },
-    },
-    {
-      name: "Location 4",
-      location: { 
-        lat: 41.3797,
-        lng: 2.1682
-      },
-    },
-    {
-      name: "Location 5",
-      location: { 
-        lat: 41.4055,
-        lng: 2.1915
-      },
-    }
-  ];
 
   const [ currentPosition, setCurrentPosition ] = useState({});
   
@@ -136,16 +95,16 @@ const MapContainer = ({userId}) => {
             >
               <div className="centerOptions">
               <div>
-                <img src={`${selected.image}`} className="observationImage"/>
+                <img src={`${selected.image}`} className="observationInfoImage"/>
               </div>
+              <p>{selected.comment}</p>
+              <p className="boldText">{selected.username}</p>
               
               <Link to={"/post/" + selected.id}>
                 <button className="buttonOptions">View Post</button>
           
               </Link>
 
-              <p>{selected.username}</p>
-              <p>{selected.comment}</p>
               
               </div>
             </InfoWindow>
