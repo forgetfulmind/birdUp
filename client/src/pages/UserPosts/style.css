@@ -69,7 +69,7 @@ a:hover{
     .single{
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: scroll;
         padding: 0;
     }
 
