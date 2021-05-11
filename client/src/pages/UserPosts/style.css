@@ -66,6 +66,10 @@ a:hover{
 
 
 @media only screen and (max-width: 790px){
+    .body{
+        min-height: 100vh;
+    }
+
     .single{
         display: flex;
         flex-direction: column;
