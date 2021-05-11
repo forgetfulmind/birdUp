@@ -134,13 +134,13 @@ const MapContainer = ({userId}) => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
-              <div>
+              <div className="centerOptions">
               <div>
                 <img src={`${selected.image}`} className="observationImage"/>
               </div>
               
               <Link to={"/post/" + selected.id}>
-                <button>View Post</button>
+                <button className="buttonOptions">View Post</button>
           
               </Link>
 
