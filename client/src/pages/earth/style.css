@@ -11,3 +11,53 @@
     object-fit: cover;
     border-radius: 5px;
 }
+
+.gm-style-iw{
+    border: 1px solid black;
+    background: #a6b3a7 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+
+}
+
+.gm-style-iw-d{
+    border: 1px solid black;
+    background: #e7e8dd;
+    overflow: hidden !important;
+    margin: 10px;
+}
+
+.gm-ui-hover-effect{
+    border: 1px solid black !important;
+    opacity: 1;
+    background: #d8dfd9 !important;
+}
+
+.gm-style-iw-t::after{
+    border: 1px solid black;
+    background: #e7e8dd !important;
+}
+
+.buttonOptions{
+    border: 1px solid black;
+    /* background: #b15b24 !important; */
+}
+
+.centerOptions{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 10px;
+}
+
+.boldText{
+    font-weight: 600;
+}
+
+.observationInfoImage{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
