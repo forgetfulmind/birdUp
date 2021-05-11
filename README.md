@@ -28,7 +28,7 @@
 
   <h3><a name="usage">Usage:</a></h3>
 
-  please feel free to use as you see fit! here is the link to our deployed application: [birdUp on Heroku]("https://aqueous-dawn-98851.herokuapp.com/")
+  please feel free to use as you see fit! here is the link to our deployed application: <a href="https://aqueous-dawn-98851.herokuapp.com/">birdUp on Heroku</a>
 
   <h3><a name="liscense">License:</a></h3>
 
