@@ -76,9 +76,23 @@ function Posts({userId}) {
               <span><h4>Date: {observations.createdAt.split('T')[0]}</h4></span>
 
             </div>
-            
+
             <hr />
-              <GoogleMap
+
+            <div className='commentData'>
+
+              <h4>
+                Comments:
+              </h4>
+              {observations.comment ? <p>{observations.comment}</p>  : <p></p>}
+
+              <h4>
+                Posted by <Link to={"/member/" + observations.userId}>{observations.username}</Link>
+              </h4>
+
+            </div>
+
+            <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={13}
                 center={currentPosition}
@@ -103,19 +117,6 @@ function Posts({userId}) {
                   })
                 }
               </GoogleMap>
-
-              <div className='commentData'>
-
-                <h4>
-                  Comments:
-                </h4>
-                {observations.comment ? <p>{observations.comment}</p>  : <p></p>}
-
-                <h4>
-                  Posted by <Link to={"/member/" + observations.userId}>{observations.username}</Link>
-                </h4>
-
-              </div>
 
             </div>
           </div> 
